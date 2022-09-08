@@ -16,7 +16,7 @@ app.use("/images", express.static(__dirname + "static/images"));
 
 
 app.get("/", async (req, res) => {
-    res.render("home");
+    res.render("index");
 })
 
 app.get("*", function (req, res) {
