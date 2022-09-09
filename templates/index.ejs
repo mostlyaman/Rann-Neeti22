@@ -130,7 +130,15 @@
                 <li><a href="events.html" class="nav-link">Events</a></li>
                 <li><a href="#sponsers" class="nav-link">sponsers</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
-                <li><a href="log_sin.html" class="nav-link">Login/SignUp</a></li>
+                <% if(!authenticated){ %>
+                  <li>
+                    <a id="sign" href="/auth/google"><i class="nav-link fa-brands fa-google"></i> SignIn</a>
+                  </li>
+                  <% }else{ %>
+                    <li><a id="sign" href="/profile" class="nav-link"> Profile</a></li>
+                    <li><a id="sign" href="/auth/logout" class="nav-link"><i class="fa-brands fa-google"></i> Logout</a>
+                    </li>
+                    <% } %>
                 <li>
                   <div class="hamburger" onclick="myFunction(this)">
                     <div class="bar1"></div>
