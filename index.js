@@ -19,6 +19,18 @@ app.get("/", async (req, res) => {
     res.render("index");
 })
 
+app.get("/events", async (req, res) => {
+    res.render("events.ejs");
+})
+
+app.get("/game" , async(req,res)=>{
+    res.render("game.ejs")
+})
+
+app.get("/confirm",async(req,res)=>{
+    res.render("confirm.ejs")
+})
+
 app.get("*", function (req, res) {
     res.status(404).send("<h1> Not Found! </h1>")
 })
