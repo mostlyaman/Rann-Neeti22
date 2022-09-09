@@ -6,6 +6,7 @@ const users = require("./models/user.js")
 const port = process.env.PORT || 5000;
 const { authCheck } = require("./middleware/auth");
 const authRoutes = require("./routes/authroutes");
+const eventRoutes = require("./routes/eventroutes");
 const path = require("path")
 const passport = require("passport")
 const bodyParser = require("body-parser")
@@ -64,26 +65,10 @@ app.use(passport.session());
 
 // Routes
 app.use("/auth", authRoutes);
-// app.use("/", eventRoutes);
-
-
-
-
+app.use("/events", eventRoutes);
 
 app.get("/", async (req, res) => {
     res.render("index", { authenticated: req.isAuthenticated() });
-})
-
-app.get("/events", async (req, res) => {
-    res.render("events.ejs");
-})
-
-app.get("/game", async (req, res) => {
-    res.render("game.ejs")
-})
-
-app.get("/confirm", async (req, res) => {
-    res.render("confirm.ejs")
 })
 
 app.get("*", function (req, res) {
