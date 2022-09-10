@@ -2,14 +2,24 @@ const mongoose = require("mongoose");
 
 const UserSchema = new mongoose.Schema(
     {
-        name:
+        googleId:
         {
             type: String,
             required: true,
         },
-        phone:
+        firstName:
         {
             type: String,
+            required: true,
+        },
+        lastName:
+        {
+            type: String,
+            required: true,
+        },
+        phoneNumber:
+        {
+            type: Number,
             required: true,
         },
         email:
@@ -19,7 +29,8 @@ const UserSchema = new mongoose.Schema(
         },
         teamId: // the team that person belong to, if he is playing in any sport having team
         {
-            type: String,
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "team",
         },
         image:
         {
@@ -33,7 +44,6 @@ const UserSchema = new mongoose.Schema(
         college:
         {
             type: String,
-            required: true,
         }
     }
 );

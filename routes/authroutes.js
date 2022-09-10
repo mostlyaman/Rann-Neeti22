@@ -3,7 +3,8 @@ const passport = require("passport");
 
 // auth logout
 router.get("/logout", (req, res) => {
-    req.session.destroy();
+    if (req.session)
+        req.session.destroy();
     res.redirect("/");
 });
 

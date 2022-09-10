@@ -10,6 +10,8 @@ const eventRoutes = require("./routes/eventroutes");
 const path = require("path")
 const passport = require("passport")
 const bodyParser = require("body-parser")
+const connectDB = require("./config/db");
+const MongoStore = require("connect-mongo");
 
 // Load config
 require("dotenv").config({ path: "./config/config.env" });
@@ -20,13 +22,16 @@ require("./config/passport")(passport);
 
 const app = express();
 
+
+connectDB();
+
 // Sessions middleware
 app.use(
     session({
         secret: process.env.SECRET,
         resave: false,
         saveUninitialized: true,
-        // store: MongoStore.create({ mongoUrl: process.env.MONGO_DATABASE_URI }),
+        store: MongoStore.create({ mongoUrl: process.env.MONGO_DATABASE_URI }),
     })
 );
 
