@@ -12,4 +12,8 @@ router.get("/game/confirm", async (req, res) => {
     res.render("confirm.ejs")
 })
 
+router.get("/game/createteam" , (req,res)=>{
+    res.render('createteam.ejs')
+})
+
 module.exports = router;
