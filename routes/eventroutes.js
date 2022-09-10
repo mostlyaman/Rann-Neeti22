@@ -16,4 +16,6 @@ router.get("/game/createteam" , (req,res)=>{
     res.render('createteam.ejs')
 })
 
+
+
 module.exports = router;
