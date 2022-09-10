@@ -66,11 +66,15 @@
                 flex-direction: column;
                 text-align:center;
                 width: 90%;">
-                    <img src="" alt="to be shown">
+                    <img src="<%= user.image %>" alt="to be shown">
                     <br>
-                    <span id="name">Name</span>
+                    <span id="name">
+                        <%= user.firstName %>
+                    </span>
                     <br>
-                    <span id="email">Email</span>
+                    <span id="email">
+                        <%= user.email %>
+                    </span>
                 </div>
                 <hr>
                 <div style="width: 100%;
@@ -81,10 +85,10 @@
                 height: auto;">
                     <button style="margin: 10px 10px; width: 35%;
     padding: 7px;
-    border-radius: 30px;" class="btn btn-primary">Home</button>
+    border-radius: 30px;" class="btn btn-primary" onclick="window.location='/';">Home</button>
                     <button style="margin: 0px 10px; width: 35%;
     padding: 7px;
-    border-radius: 30px;" class="btn btn-primary">Logout</button>
+    border-radius: 30px;" class="btn btn-primary" onclick="window.location='/auth/logout';">Logout</button>
                 </div>
             </div>
 
@@ -94,19 +98,27 @@
                     <div class="title-section">
                         <h2 class="heading">Events Registered</h2>
                     </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores dolorum itaque quis nobis vitae doloribus unde id harum pariatur iure qui quibusdam tenetur eaque quod, veniam inventore eum corrupti dolor? Labore maxime quidem necessitatibus, quis voluptate culpa adipisci minus animi.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores dolorum itaque quis nobis
+                        vitae doloribus unde id harum pariatur iure qui quibusdam tenetur eaque quod, veniam inventore
+                        eum corrupti dolor? Labore maxime quidem necessitatibus, quis voluptate culpa adipisci minus
+                        animi.</p>
                 </div>
                 <div id="teamcreate">
                     <div class="title-section">
                         <h2 class="heading">Team Created</h2>
                     </div>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam id rem natus aliquid expedita, alias deleniti quaerat cupiditate error quo iste saepe non placeat iure. A error quos velit at!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam id rem natus aliquid
+                        expedita, alias deleniti quaerat cupiditate error quo iste saepe non placeat iure. A error quos
+                        velit at!</p>
                 </div>
                 <div id="teamjoin">
                     <div class="title-section">
                         <h2 class="heading">Team Joined</h2>
                     </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque suscipit dolore ipsam laborum cum, magni labore numquam. Quidem, perspiciatis repellendus harum eos quaerat voluptatum iure obcaecati, a, alias eius reprehenderit totam? Libero reprehenderit est omnis dignissimos dolorem magnam iure alias voluptatum quam illum, nemo dolor voluptates quia eum quibusdam rem.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque suscipit dolore ipsam laborum cum,
+                        magni labore numquam. Quidem, perspiciatis repellendus harum eos quaerat voluptatum iure
+                        obcaecati, a, alias eius reprehenderit totam? Libero reprehenderit est omnis dignissimos dolorem
+                        magnam iure alias voluptatum quam illum, nemo dolor voluptates quia eum quibusdam rem.</p>
                 </div>
             </div>
 

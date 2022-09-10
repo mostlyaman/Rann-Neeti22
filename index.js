@@ -7,6 +7,7 @@ const port = process.env.PORT || 5000;
 const { authCheck } = require("./middleware/auth");
 const authRoutes = require("./routes/authroutes");
 const eventRoutes = require("./routes/eventroutes");
+const navRoutes = require("./routes/navroutes");
 const path = require("path")
 const passport = require("passport")
 const bodyParser = require("body-parser")
@@ -71,12 +72,13 @@ app.use(passport.session());
 // Routes
 app.use("/auth", authRoutes);
 app.use("/events", eventRoutes);
+app.use("/", navRoutes);
 
 app.get("/", async (req, res) => {
     res.render("index", { authenticated: req.isAuthenticated() });
 })
 
-app.get("/profile",async(req,res)=>{
+app.get("/profile", async (req, res) => {
     res.render("profile")
 })
 
