@@ -8,11 +8,6 @@ const TeamSchema = new mongoose.Schema(
             required: true,
             unique: true,
         },
-        size:
-        {
-            type: Number,
-            required: true,
-        },
         event:
         {
             type: String,
@@ -39,6 +34,11 @@ const TeamSchema = new mongoose.Schema(
             type: Date,
             default: Date.now,
         },
+        paymentStatus:
+        {
+            type: Number,
+            default: 0,
+        }
     }
 );
 

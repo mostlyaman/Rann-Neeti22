@@ -1,11 +1,17 @@
 const { application } = require("express");
-const { findAllEvents, findEvent, isRegisteredforEvent } = require("../utils.js");
+const { findAllEvents, findEvent, isRegisteredforEvent, createTeam } = require("../utils.js");
 
 const router = require("express").Router();
 
 router.get("/", async (req, res) => {
     let events = await findAllEvents();
-    res.render("events.ejs", { events });
+
+    let context = {
+        events: events,
+        authenticated: req.isAuthenticated()
+    }
+
+    res.render("events.ejs", context);
 })
 
 router.get("/game", async (req, res) => {
@@ -44,14 +50,8 @@ router.post("/createTeam", async (req, res) => {
     const gameName = req.query.game;
     const event = await findEvent(gameName);
 
-    const {
-        TeamName
-    } = req.body;
-
-    console.log(TeamName);
-
-
-    res.redirect("/");
+    let val = await createTeam(req, event);
+    res.redirect("/profile");
 })
 
 module.exports = router;
