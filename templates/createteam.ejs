@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Create Team | RannNeeti-22</title>
 
 
 
@@ -31,11 +31,11 @@
     <style>
         @media only screen and (max-width:500px) {
 
-            *{
+            * {
                 font-size: 0.5rem;
             }
 
-            input{
+            input {
                 font-size: 10px;
             }
         }
@@ -61,7 +61,8 @@
             <div class="container">
                 <div class="row align-items-center " style=" margin-bottom: 35px; height: auto;">
                     <div class="mx-auto text-center" style="margin-top:20px;">
-                        <h1 class="text-white">Event Name</h1>
+                        <h1 class="text-white">Registration for <%= event.name%>
+                        </h1>
                         <!-- <button class="btn btn-primary" style=" padding: 7px;
                   margin-top: 30px;
                   width: 45%;
@@ -72,7 +73,7 @@
             </div>
 
             <div class="container align-items-center">
-                <form action="" style="    display: flex;
+                <form action="/events/createTeam?game=<%=event.name%>" method="POST" style="    display: flex;
             flex-direction: column;
             width: 45%;
             margin: 40px auto;
@@ -84,28 +85,25 @@
                 width: 70%;
                 padding: 5px;
                 margin-left: 30px;
-                border-radius: 10px;" type="text" placeholder="Enter Team Name">
+                border-radius: 10px;" name="TeamName" id="TeamName" type="text" placeholder="Enter Team Name"
+                        autocomplete="off">
 
                     <!-- <hr> -->
 
                     <div class="title-section" style="margin-top:40px ;">
-                        <label class="heading" for="registration">Registration Fee</label>
+                        <label class="heading" for="registration">Registration Fee - <%= event.fees%></label>
                     </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam fugit laboriosam corporis
-                        illum
-                        eaque cupiditate deserunt obcaecati aperiam consequuntur labore doloremque praesentium dolor
-                        impedit, quisquam voluptate excepturi pariatur maxime nihil amet, ea repudiandae ullam, aliquam
-                        exercitationem. Quos sequi amet earum.</p>
+                    <p>You have to pay this fees after registration, through payment portal.</p>
                     <button style="    width: 30%;
                 padding: 10px;
                 border-radius: 30px;
-                margin-left: 30px;" class="btn btn-primary">Pay Now</button>
+                margin-left: 30px;" class="btn btn-primary">Confirm</button>
 
                 </form>
             </div>
         </div>
 
-        
+
         <script src="js/jquery-3.3.1.min.js"></script>
         <script src="js/jquery-migrate-3.0.1.min.js"></script>
         <script src="js/jquery-ui.js"></script>

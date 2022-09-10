@@ -44,6 +44,11 @@ const UserSchema = new mongoose.Schema(
         college:
         {
             type: String,
+        },
+        paymentStatus:
+        {
+            type: Number,
+            default: 0
         }
     }
 );

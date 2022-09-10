@@ -35,7 +35,9 @@
             font-size: 25px;
         }
     </style>
-    <title>Game|RannNeeti-22</title>
+    <title>
+        <%=event.name %>|RannNeeti-22
+    </title>
 
 </head>
 
@@ -58,7 +60,9 @@
                 <div class="row align-items-center " style="    height: auto;
               min-height: 250px;">
                     <div class="mx-auto text-center">
-                        <h1 class="text-white">Event Name</h1>
+                        <h1 class="text-white">
+                            <%=event.name%>
+                        </h1>
                         <button class="btn btn-primary" style=" padding: 7px;
                   margin-top: 30px;
                   width: 45%;
@@ -95,12 +99,13 @@
                 margin-top: 30px;
                 width: 25%;
                 border-radius: 30px;
-                font-size: 20px;">Register</button>
-            <button id="createteam" class="btn btn-primary" style="    padding: 10px;
+                font-size: 20px;" onclick="window.location='/events/game';">Register</button>
+                <button id="createteam" class="btn btn-primary" style="    padding: 10px;
                 margin-top: 30px;
                 width: 25%;
                 border-radius: 30px;
-                font-size: 20px;">Create Team</button>
+                font-size: 20px;" onclick="window.location='/events/createTeam?game=<%=event.name %>';">Create
+                    Team</button>
             </div>
 
 
