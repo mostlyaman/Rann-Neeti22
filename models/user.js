@@ -27,12 +27,22 @@ const UserSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
-        teamId: // the team that person belong to, if he is playing in any sport having team
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "team",
-            default: null,
-        },
+        teams:
+            [
+                {
+                    teamId: {
+                        type: mongoose.Schema.Types.ObjectId,
+                        ref: "team",
+                        default: null,
+                    },
+                    eventId: {
+                        type: mongoose.Schema.Types.ObjectId,
+                        ref: "event",
+                        default: null,
+                    }
+
+                }
+            ],
         image:
         {
             type: String,

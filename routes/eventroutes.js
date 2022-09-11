@@ -1,5 +1,5 @@
 const { application } = require("express");
-const { findAllEvents, findEvent, isRegisteredforEvent, createTeam } = require("../utils.js");
+const { findAllEvents, findEvent, isRegisteredforEvent, createTeam, joinTeam } = require("../utils.js");
 
 const router = require("express").Router();
 
@@ -53,6 +53,21 @@ router.post("/createTeam", async (req, res) => {
     // validation need to  be added here
     let val = await createTeam(req, event);
     res.redirect("/profile");
+})
+
+router.get("/joinTeam", async (req, res) => {
+    res.render('confirm');
+})
+
+
+router.post("/joinTeam", async (req, res) => {
+    const { teamId, college, phone } = req.body;
+    let checker = await joinTeam(teamId, req);
+
+    if (checker)
+        res.redirect("/profile");
+    else
+        res.send("Not joined");
 })
 
 module.exports = router;

@@ -114,13 +114,16 @@
                         <h2 style="font-size:35px ;" class="heading">Events Registered</h2>
                     </div>
 
-                    <%if(team==null) {%>
+
+                    <%if(teams.length===0) {%>
                         <p>No events registered yet</p>
                         <% } else {%>
-                            <p>
-                                <%=team._id %>
-                            </p>
-                            <% }%>
+
+                            <%for(let i=0;i < teams.length;i++){ %>
+                                <p>
+                                    <%= teams[i]._id %>
+                                </p>
+                                <%} }%>
                 </div>
             </div>
 

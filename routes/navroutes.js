@@ -1,17 +1,16 @@
-const { userDetails, findTeamById } = require("../utils")
+const { userDetails, findTeamById, findUserTeams } = require("../utils")
 
 const router = require("express").Router();
 
 router.get("/profile", async (req, res) => {
 
     const userDetail = await userDetails(req.user);
-    const userTeam = await findTeamById(userDetail.teamId);
+    const userTeams = await findUserTeams(req.user);
 
     context = {
         user: userDetail,
-        team: userTeam
+        teams: userTeams
     }
-
     // users team
     res.render("profile", context);
 })
