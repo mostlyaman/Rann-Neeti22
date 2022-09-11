@@ -1229,6 +1229,7 @@ h5,
 
 .widget-next-match {
   border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
 }
 
 .widget-vs {
@@ -1269,6 +1270,7 @@ h5,
   padding: 16px 20px;
   color: #fff;
   background-color: #ee1e46;
+  border-radius: 10px;
 }
 
 .widget-title h3 {
