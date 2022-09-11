@@ -53,7 +53,7 @@ module.exports = {
         await userTable.updateOne({ googleId: userDetail.googleId }, { $set: { teamId: newteam._id } })
 
         // add the user to registered user of the event
-        await eventTable.updateOne({ _id: event._id }, { $push: { registeredUsers: userDetail._id } });
+        await eventTable.updateOne({ _id: event._id }, { $push: { registeredUsers: { user_id: userDetail._id } } });
 
 
         return true;

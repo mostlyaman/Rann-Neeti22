@@ -50,6 +50,7 @@ router.post("/createTeam", async (req, res) => {
     const gameName = req.query.game;
     const event = await findEvent(gameName);
 
+    // validation need to  be added here
     let val = await createTeam(req, event);
     res.redirect("/profile");
 })

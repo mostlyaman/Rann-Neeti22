@@ -4,11 +4,11 @@ const router = require("express").Router();
 
 router.get("/profile", async (req, res) => {
 
-    const userDetail = userDetails(req.user);
+    const userDetail = await userDetails(req.user);
     const userTeam = await findTeamById(userDetail.teamId);
 
     context = {
-        user: await userDetails(req.user),
+        user: userDetail,
         team: userTeam
     }
 

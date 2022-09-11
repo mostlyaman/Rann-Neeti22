@@ -19,7 +19,7 @@
 
     <link rel="stylesheet" href="/css/bootstrap-datepicker.css">
 
-    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="/fonts/flaticon/font/flaticon.css">
 
     <link rel="stylesheet" href="/css/aos.css">
 
@@ -113,10 +113,14 @@
                     <div class="title-section">
                         <h2 style="font-size:35px ;" class="heading">Events Registered</h2>
                     </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores dolorum itaque quis nobis
-                        vitae doloribus unde id harum pariatur iure qui quibusdam tenetur eaque quod, veniam inventore
-                        eum corrupti dolor? Labore maxime quidem necessitatibus, quis voluptate culpa adipisci minus
-                        animi.</p>
+
+                    <%if(team==null) {%>
+                        <p>No events registered yet</p>
+                        <% } else {%>
+                            <p>
+                                <%=team._id %>
+                            </p>
+                            <% }%>
                 </div>
             </div>
 

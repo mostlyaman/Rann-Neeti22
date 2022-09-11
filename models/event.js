@@ -46,7 +46,7 @@ const EventSchema = new mongoose.Schema(
         registeredUsers: [
             {
                 user_id: {
-                    type: String,
+                    type: mongoose.Schema.Types.ObjectId,
                     unique: true,
                 },
             },

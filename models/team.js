@@ -23,7 +23,7 @@ const TeamSchema = new mongoose.Schema(
             [
                 {
                     member_id: {
-                        type: String,
+                        type: mongoose.Schema.Types.ObjectId,
                         required: true,
                     },
                 },
