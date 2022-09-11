@@ -37,25 +37,72 @@
       background-attachment: fixed;
     }
 
-    .btn {
-      margin: 8px 20px;
-      border-radius: 30px;
-      /* display: none; */
+    .register {
+      margin: -55px;
+    width: 90%;
+    padding: 21px;
+    border-radius: 96px;
+    z-index: -1;
+    background-color: #00000036;
+    border: 0px;
+    font-size: 20px;
     }
 
     .gamecard {
       display: flex;
       flex-direction: column;
-      width: 40%;
-      margin: 37px 50px;
+      width: 46%;
+      margin: 48px -20px;
       height: auto;
-    }
-    
-    .gamecard img{
-      box-shadow: -14px -14px 19px -10px #bc1111;
-
+      align-items: center;
     }
 
+    .gamecard img:hover {
+      opacity: 0.3;
+      box-shadow: 28px -28px 60px -20px #ff0000;
+      transform: scale(1.03);
+      overflow: hidden;
+    }
+
+    .gamecard:hover button {
+      z-index: 1;
+    }
+
+    .head span{
+      font-size: 43px;
+    text-shadow: 4px 0px 18px red;
+    line-height: 58px;
+    }
+
+    .head {
+      line-height: 1.5;
+      padding-left: 7.5rem;
+      padding-top: 25%;
+      display: flex;
+      align-items: baseline;
+      transform: skewX(-7.5deg);
+      color: red;
+      font-weight: bold;
+      font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    }
+
+    .cont {
+      position: sticky;
+      bottom: 0;
+      top: 0;
+      left: 0;
+      padding-top: 5rem;
+      width: 50%;
+      height: 100vh;
+      color: white;
+      background-color: rgb(0, 20, 47);
+      transform: skewX(7.5deg) translateX(-100px);
+      padding-top: 2.5rem;
+      width: 250px;
+      background-color: #000000bf;
+    }
   </style>
 
 </head>
@@ -72,42 +119,62 @@
       </div>
       <div class="site-mobile-menu-body"></div>
     </div>
-
-    <div class="overlay" style="    height: auto;
-    background: url('https://media.istockphoto.com/photos/abstract-red-and-black-are-light-pattern-with-the-gradient-is-the-picture-id1205633216?b=1&k=20&m=1205633216&s=612x612&w=0&h=Usx41mX7-MfboMFrH-RKx-lc9T1JDBtP4pp1ntQdaSk=') no-repeat center center/cover;
-    min-height: 100vh;">
-      <div class="container">
-        <div class="row align-items-center " style="    height: auto;
-        min-height: 250px;">
-          <div class="mx-auto text-center">
-            <h1 class="text-white">RannNeeti-22 Events</h1>
-            <button onclick="window.location = '/confirm'" class="btn btn-primary" style=" padding: 7px;
-            margin-top: 30px;
-            width: 45%;
-            border-radius: 30px;
-            font-size: 20px;">Join A Team</button>
-          </div>
+    <div id="page" style="display: flex;background:url('images/eventbg.png') no-repeat center center/cover">
+      <div class="cont">
+        <div class="head">
+          <span>&nbsp;E</span>
+          <span>&nbsp;V</span>
+          <span>&nbsp;E</span>
+          <span>&nbsp;N</span>
+          <span>&nbsp;T</span>
+          <span>&nbsp;S</span>
         </div>
       </div>
-      <div class="container site-section" style="padding:10px">
+      <div class="overlay" style="    height: auto;
+      min-height: 100vh;">
+      <div >
+        <!-- style="background:url('https://s.yimg.com/uu/api/res/1.2/OF4n1WBaz_xC6.NzeKXoLg--~B/aD00MDY7dz03MjA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/deadline.com/5b4eb11e2188b6e4bea9e9a9c5c7a4e0') no-repeat center center/cover" -->
         <div class="container">
-          <div style="display: flex;justify-content:flex-start; flex-wrap: wrap;">
-            <%for(let i=0; i< events.length;i++){ %>
-              <div class="gamecard">
-                <img style="height: auto; width: 100%; min-height: 250px; border-radius: 10px;"
-                  src="<%=events[i].event_image %>" alt="">
-                <button onclick="window.location='/events/game?game=<%=events[i].name %>';" class="btn btn-primary">
-                  <%= events[i].name%>
-                </button>
-              </div>
-              <% } %>
+          <div class="row align-items-center " style="    height: auto;
+          min-height: 250px;">
+            <div class="mx-auto text-center">
+              <h1 style="    font-size: 3.5rem;
+              text-shadow: -2px -6px 17px red;">RannNeeti-22</h1>
+              <button onclick="window.location = '/confirm'" class="btn btn-primary" style=" padding: 7px;
+              margin-top: 30px;
+              width: 45%;
+              border-radius: 30px;
+              font-size: 20px;">Join A Team</button>
+            </div>
           </div>
-
         </div>
       </div>
-
-
+      
+        <div>
+  
+          <div class="site-section">
+            <div class="container" style="margin: -125px 0px 8% 8%;">
+              <div style="display: flex;; flex-wrap: wrap;">
+                <%for(let i=0; i< events.length;i++){ %>
+                  <div class="gamecard">
+                    <img style="height: auto; width: 80%; min-height: 300px; border-radius: 40px;"
+                      src="<%=events[i].event_image %>" alt="">
+                    <button onclick="window.location='/events/game?game=<%=events[i].name %>';"
+                      class="btn register btn-primary">
+                      <%= events[i].name%>
+                    </button>
+                  </div>
+                  <% } %>
+              </div>
+    
+            </div>
+          </div>
+        </div>
+  
+  
+      </div>
     </div>
+
 
 
 
