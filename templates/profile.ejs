@@ -65,16 +65,22 @@
                 <div id="info" style="    display: flex;
                 flex-direction: column;
                 text-align:center;
-                width: 90%;">
-                    <img src="<%= user.image %>" alt="to be shown">
+                width: 90%; align-items: center;">
+                    <img style="max-height: 100px;
+                    width: 100px;
+                    vertical-align: middle;
+                    border-style: none;
+                    border-radius: 60px;" src="<%= user.image %>" alt="to be shown">
                     <br>
-                    <span id="name">
-                        <%= user.firstName %>
-                    </span>
-                    <br>
-                    <span id="email">
-                        <%= user.email %>
-                    </span>
+                    <div style="font-size:20px; color:white;">
+                        <span id="name">
+                            <%= user.firstName %>
+                        </span>
+                        <br>
+                        <span id="email">
+                            <%= user.email %>
+                        </span>
+                    </div>
                 </div>
                 <hr>
                 <div style="width: 100%;
