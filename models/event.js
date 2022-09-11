@@ -50,7 +50,11 @@ const EventSchema = new mongoose.Schema(
                     unique: true,
                 },
             },
-        ]
+        ],
+        teamSize: {
+            type: Number,
+            required: true
+        }
     }
 );
 
