@@ -1,48 +1,53 @@
-<header class="site-navbar py-2 " role="banner">
-    <div class="">
-        <div class="d-flex align-items-center">
-            <div class="site-logo">
-                <a href="index.html">
-                    <img src="https://user-images.githubusercontent.com/111749567/189416480-17f855ab-9343-4ef1-8aa1-1c7311f55e04.png"
-                        alt="Logo" height="70px">
-                </a>
-                <h3>IIT Mandi</h3>
-            </div>
-            <!-- changed -->
-            <div id="cont">
-                <nav class="site-navigation text-right " role="navigation">
-                    <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
-                        <li class="active"><a href="index.html" class="nav-link">Home</a></li>
-                        <li><a href="#about" class="nav-link">About Us</a></li>
-                        <li><a href="/events" class="nav-link">Events</a></li>
-                        <li><a href="#sponsers" class="nav-link">sponsers</a></li>
-                        <li><a href="#contact" class="nav-link">Contact</a></li>
-                        <% if(!authenticated){ %>
-                            <li>
-                                <a id="sign" href="/auth/google"><i class="nav-link fa-brands fa-google"></i> SignIn</a>
-                            </li>
-                            <% }else{ %>
-                                <li><a id="sign" href="/profile" class="nav-link"> Profile</a></li>
-                                <li><a id="sign" href="/auth/logout" class="nav-link"><i
-                                            class="fa-brands fa-google"></i> Logout</a>
-                                </li>
-                                <% } %>
-                                    <li>
-                                        <div class="hamburger" onclick="myFunction(this)">
-                                            <div class="bar1"></div>
-                                            <div class="bar2"></div>
-                                            <div class="bar3"></div>
-                                        </div>
-                                    </li>
-                                    <!-- <button id="hamburger" class="material-symbols-outlined">menu</button> -->
-                    </ul>
-                </nav>
-                <!-- changed -->
-                <a href="#"
-                    class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black float-right text-white"><span
-                        class="icon-menu h3 text-white"></span></a>
-            </div>
-        </div>
+<header class="site-navbar py-2" role="banner">
+  <div class="">
+    <div class="d-flex align-items-center">
+      <div class="site-logo">
+        <a href="index.html">
+          <img
+            src="https://user-images.githubusercontent.com/111749567/189416480-17f855ab-9343-4ef1-8aa1-1c7311f55e04.png"
+            alt="Logo"
+            height="70px"
+          />
+        </a>
+        <h3>IIT Mandi</h3>
+      </div>
+      <!-- changed -->
+      <div id="cont">
+        <nav class="site-navigation text-right" role="navigation">
+          <ul
+            class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block"
+          >
+            <li class="active">
+              <a href="/" class="nav-link">Home</a>
+            </li>
+            <li><a href="#about" class="nav-link">About Us</a></li>
+            <li><a href="/events" class="nav-link">Events</a></li>
+            <li><a href="#sponsers" class="nav-link">sponsers</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+            <% if(!authenticated){ %>
+            <li>
+              <a id="sign" href="/auth/google"
+                ><i class="nav-link fa-brands fa-google"></i> SignIn</a
+              >
+            </li>
+            <% }else{ %>
+            <li><a id="sign" href="/profile" class="nav-link"> Profile</a></li>
+            <li>
+              <a id="sign" href="/auth/logout" class="nav-link"
+                ><i class="fa-brands fa-google"></i> Logout</a
+              >
+            </li>
+            <% } %>
+            <!-- <button id="hamburger" class="material-symbols-outlined">menu</button> -->
+          </ul>
+        </nav>
+        <!-- changed -->
+        <a
+          href="#"
+          class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black float-right text-white"
+          ><span class="icon-menu h3 text-white"></span
+        ></a>
+      </div>
     </div>
-
+  </div>
 </header>
