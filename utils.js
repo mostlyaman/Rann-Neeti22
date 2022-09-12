@@ -15,6 +15,12 @@ module.exports = { // event functions ==========================================
         const userDetail = await userTable.findOne({ googleId: user.googleId });
         return userDetail;
     },
+    findUserById: async function (user_id) {
+        const userTable = require("./models/user");
+        const userDetail = await userTable.findOne({ _id: user_id });
+
+        return userDetail;
+    },
     isRegisteredforEvent: async function (user, event) {
 
         const userTable = require("./models/user");
@@ -143,5 +149,15 @@ module.exports = { // event functions ==========================================
         const teamTable = require("./models/team");
         const teamDetail = await teamTable.findOne({ _id: teamId });
         return teamDetail;
+    },
+    findAllMembersOfTeam: async function (team) {
+        const mems = team.members;
+
+        const memberDetails = []
+        for (let i = 0; i < mems.length; i++) {
+            memberDetails.push(await module.exports.findUserById(mems[i].user_id));
+        }
+
+        return memberDetails;
     },
 };

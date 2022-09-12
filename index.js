@@ -8,6 +8,7 @@ const { authCheck } = require("./middleware/auth");
 const authRoutes = require("./routes/authroutes");
 const eventRoutes = require("./routes/eventroutes");
 const navRoutes = require("./routes/navroutes");
+const teamRoutes = require("./routes/teamroutes");
 const path = require("path")
 const passport = require("passport")
 const bodyParser = require("body-parser")
@@ -73,12 +74,13 @@ app.use(passport.session());
 app.use("/auth", authRoutes);
 app.use("/events", eventRoutes);
 app.use("/", navRoutes);
+app.use("/", teamRoutes);
 
 app.get("/", async (req, res) => {
     res.render("index", { authenticated: req.isAuthenticated() });
 })
 
-app.get('/teampage',(req,res)=>{
+app.get('/teampage', (req, res) => {
     res.render("teampage.ejs")
 })
 

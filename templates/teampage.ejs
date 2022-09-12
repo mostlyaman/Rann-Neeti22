@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Team | <%= team.name %>
+    </title>
 
     <link rel="stylesheet" href="fonts/icomoon/style.css">
 
@@ -126,14 +127,18 @@
         style="min-height: 100vh;height: auto ;display: flex;background:url('/images/sponcontbg.jpg') no-repeat center center/cover;flex-direction: column;">
         <div class="cont">
             <div class="head">
-                <span>Munna Bhai MBBS</span>
+                <span>
+                    <%= team.name%>
+                </span>
             </div>
         </div>
         <div style="display: flex;">
             <div class="teaminfo" style="border:2px solid">
                 <span style="font-size: 25px; font-weight:bold; margin-bottom:50px">Indian institute of technology
                     mandi</span>
-                <span style="margin:-15px 0px ;">Lakshay Nailwal</span>
+                <span style="margin:-15px 0px ;">
+                    <%= leader.name %>
+                </span>
                 <span style="margin:-15px 0px ;">lakshaynailwal@gmail.com</span>
                 <span style="margin:-15px 0px ;">1243644533</span>
             </div>
