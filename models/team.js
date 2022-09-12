@@ -15,7 +15,7 @@ const TeamSchema = new mongoose.Schema(
         },
         teamLeader:
         {
-            type: String,
+            type: mongoose.Schema.Types.ObjectId,
             required: true,
         }
         ,

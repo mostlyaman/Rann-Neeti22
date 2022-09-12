@@ -139,55 +139,35 @@
                 <span style="margin:-15px 0px ;">
                     <%= leader.name %>
                 </span>
-                <span style="margin:-15px 0px ;">lakshaynailwal@gmail.com</span>
+                <span style="margin:-15px 0px ;">
+                    <%= team._id %>
+                </span>
                 <span style="margin:-15px 0px ;">1243644533</span>
             </div>
 
             <div class="contain" style="display: flex;
             flex-direction: column;
             width: 30%;margin-left: 50%;">
-                <div class="player">
-                    <span style="display: flex; align-items:center">Name <i style="font-size: 25px;
-                        position: absolute;
-                        right: 14px;
-                    " class="material-icons" style="font-size:36px">close</i></span>
-                    <Span>Email</Span>
-                </div>
-                <div class="player">
-                    <span style="display: flex; align-items:center">Name <i style="font-size: 25px;
-                        position: absolute;
-                        right: 14px;
-                    " class="material-icons" style="font-size:36px">close</i></span>
-                    <Span>Email</Span>
-                </div>
-                <div class="player">
-                    <span style="display: flex; align-items:center">Name <i style="font-size: 25px;
-                        position: absolute;
-                        right: 14px;
-                    " class="material-icons" style="font-size:36px">close</i></span>
-                    <Span>Email</Span>
-                </div>
-                <div class="player">
-                    <span style="display: flex; align-items:center">Name <i style="font-size: 25px;
-                        position: absolute;
-                        right: 14px;
-                    " class="material-icons" style="font-size:36px">close</i></span>
-                    <Span>Email</Span>
-                </div>
-                <div class="player">
-                    <span style="display: flex; align-items:center">Name <i style="font-size: 25px;
-                        position: absolute;
-                        right: 14px;
-                    " class="material-icons" style="font-size:36px">close</i></span>
-                    <Span>Email</Span>
-                </div>
-                <div class="player">
-                    <span style="display: flex; align-items:center">Name <i style="font-size: 25px;
-                        position: absolute;
-                        right: 14px;
-                    " class="material-icons" style="font-size:36px">close</i></span>
-                    <Span>Email</Span>
-                </div>
+
+
+                <% for(let i=0; i<teamMembers.length; i++) {%>
+                    <div class="player">
+                        <span style="display: flex; align-items:center">
+                            <%= teamMembers[i].firstName %>
+
+                                <% if(user._id==leader._id) { %>
+                                    <i style="font-size: 25px;
+                            position: absolute;
+                            right: 14px;
+                        " class="material-icons" style="font-size:36px">close</i>
+
+                                    <% } %>
+                        </span>
+                        <Span>
+                            <%= teamMembers[i].email %>
+                        </Span>
+                    </div>
+                    <% } %>
             </div>
 
         </div>

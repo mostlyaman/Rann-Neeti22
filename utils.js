@@ -89,7 +89,7 @@ module.exports = { // event functions ==========================================
         var newteam = new teamTable({
             event: event._id,
             name: TeamName,
-            teamLeader: req.user._id,
+            teamLeader: userDetail._id,
         });
 
         newteam.save(function (err) {
@@ -138,7 +138,7 @@ module.exports = { // event functions ==========================================
         if (maxTeamsize > currentTeamSize) {
             await userTable.updateOne({ googleId: userDetail.googleId }, { $push: { teams: { teamId: teamId, eventId: eventDetail._id } } });
             await eventTable.updateOne({ _id: teamDetail.event }, { $push: { registeredUsers: { user_id: userDetail._id } } });
-            await teamTable.updateOne({ _id: teamId }, { $push: { members: userDetail._id } });
+            await teamTable.updateOne({ _id: teamId }, { $push: { members: { member_id: userDetail._id } } });
             return true;
         }
         else {
@@ -152,10 +152,10 @@ module.exports = { // event functions ==========================================
     },
     findAllMembersOfTeam: async function (team) {
         const mems = team.members;
-
         const memberDetails = []
         for (let i = 0; i < mems.length; i++) {
-            memberDetails.push(await module.exports.findUserById(mems[i].user_id));
+            let member = await module.exports.findUserById(mems[i].member_id);
+            memberDetails.push(await module.exports.findUserById(mems[i].member_id));
         }
 
         return memberDetails;
