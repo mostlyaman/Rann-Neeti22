@@ -1,0 +1,78 @@
+@media only screen and (max-width:1100px){
+    h1{
+        font-size: 3rem !important;
+    }
+
+    .join{
+        width:20% !important;
+        /* font-size: 18px !important; */
+    }
+
+}
+@media only screen and (max-width:1000px){
+    .image {
+        min-height: 270px !important;
+    }
+}
+@media only screen and (max-width:800px){
+    h1{
+        font-size: 2.5rem !important;
+    }
+    .join{
+        width: 30% !important;
+        font-size: 17px !important;
+        margin-bottom: 100px;
+    }
+}
+@media only screen and (max-width:910px){
+    .gamecard{
+        width: 70% !important;
+    margin: 70px 33px !important; 
+    }
+
+    .join{
+        width: 24% !important;
+        font-size: 15px !important;
+    }
+
+    .site{
+        position: absolute;
+        /* right: 12px; */
+    }
+}
+
+@media only screen and (max-width:710px){
+
+    h1{
+        font-size: 2rem !important;
+    }
+    .join{
+        /* width: 30% !important; */
+        font-size: 15px !important;
+        margin-bottom: 100px;
+    }
+    .gamecard{
+        width: 88% !important;
+    margin: 70px -11px !important;
+}}
+@media only screen and (max-width:768px){
+    
+    .gamecard{
+        width: 88% !important;
+    margin: 70px -11px !important;
+}        
+}
+
+@media only screen and (max-width:600px){
+    .cont{
+        display: none !important;
+    }
+    #page{
+        justify-content: center;
+    }
+
+    .overlay{
+        left: 0%;
+
+    }
+}
