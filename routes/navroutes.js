@@ -1,8 +1,8 @@
 const { userDetails, findTeamById, findUserTeams } = require("../utils")
-
+const { authCheck, liveCheck } = require("../middleware/auth");
 const router = require("express").Router();
 
-router.get("/profile", async (req, res) => {
+router.get("/profile", [authCheck, liveCheck], async (req, res) => {
 
     const userDetail = await userDetails(req.user);
     const userTeams = await findUserTeams(req.user);

@@ -1,9 +1,9 @@
 const { application } = require("express");
 const { findAllEvents, findEvent, isRegisteredforEvent, createTeam, joinTeam } = require("../utils.js");
-
+const { authCheck, liveCheck } = require("../middleware/auth");
 const router = require("express").Router();
 
-router.get("/", async (req, res) => {
+router.get("/", [authCheck, liveCheck], async (req, res) => {
     let events = await findAllEvents();
 
     let context = {
@@ -14,7 +14,7 @@ router.get("/", async (req, res) => {
     res.render("events.ejs", context);
 })
 
-router.get("/game", async (req, res) => {
+router.get("/game", [authCheck, liveCheck], async (req, res) => {
     const gameName = req.query.game;
     const event = await findEvent(gameName);
     if (event == null)
@@ -34,7 +34,7 @@ router.get("/game", async (req, res) => {
 })
 
 
-router.get("/createTeam", async (req, res) => {
+router.get("/createTeam", [authCheck, liveCheck], async (req, res) => {
     const gameName = req.query.game;
     const event = await findEvent(gameName);
 
@@ -46,7 +46,7 @@ router.get("/createTeam", async (req, res) => {
     res.render('createteam.ejs', context)
 })
 
-router.post("/createTeam", async (req, res) => {
+router.post("/createTeam", [authCheck, liveCheck], async (req, res) => {
     const gameName = req.query.game;
     const event = await findEvent(gameName);
 
@@ -60,7 +60,7 @@ router.get("/joinTeam", async (req, res) => {
 })
 
 
-router.post("/joinTeam", async (req, res) => {
+router.post("/joinTeam", [authCheck, liveCheck], async (req, res) => {
     const { teamId, college, phone } = req.body;
     let checker = await joinTeam(teamId, req);
 
