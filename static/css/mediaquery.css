@@ -67,4 +67,9 @@
         min-height: 150px;
     }
 }
+@media only screen and (max-width:419px){
+    .custom-media{
+        justify-content: center;
+    }
+}
 
