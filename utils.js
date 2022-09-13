@@ -1,3 +1,8 @@
+const payment = require("./models/payment");
+
+// Load config
+require("dotenv").config({ path: "./config/config.env" });
+
 module.exports = { // event functions ===================================================================================================================================
     findAllEvents: async function (req) {
         const events = require("./models/event");
@@ -67,6 +72,31 @@ module.exports = { // event functions ==========================================
         }
         return teams;
 
+    },
+    findAllPendingPayments: async function (user) {
+        const teamTable = require("./models/team");
+
+
+        let payments = [];
+        const userDetail = await module.exports.userDetails(user);
+        const teams = userDetail.teams;
+        // check the hospitality fees is paid or not
+
+        if (userDetail.paymentStatus == 0) {
+            payments.push({ paymentType: "user", amount: Number(process.env.AMOUNT), id: userDetail._id });
+        }
+
+        // check the teams fees, for the teams whose team leader is current user\
+
+
+        for (let i = 0; i < teams.length; i++) {
+            let team = await teamTable.findOne({ _id: teams[i].teamId });
+            if (team.teamLeader.toString() == userDetail._id.toString()) {
+                let event = await module.exports.findEventById(teams[i].eventId);
+                payments.push({ paymentType: "team", amount: event.fees, id: team._id });
+            }
+        }
+        return payments;
     },
     // team functions ===================================================================================================================================
     createTeam: async function (req, event) {

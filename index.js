@@ -9,6 +9,7 @@ const authRoutes = require("./routes/authroutes");
 const eventRoutes = require("./routes/eventroutes");
 const navRoutes = require("./routes/navroutes");
 const teamRoutes = require("./routes/teamroutes");
+const paymentRoutes = require("./routes/paymentroutes");
 const path = require("path")
 const passport = require("passport")
 const bodyParser = require("body-parser")
@@ -75,6 +76,7 @@ app.use("/auth", authRoutes);
 app.use("/events", eventRoutes);
 app.use("/", navRoutes);
 app.use("/", teamRoutes);
+app.use("/payment", paymentRoutes);
 
 app.get("/", async (req, res) => {
     res.render("index", { authenticated: req.isAuthenticated() });
