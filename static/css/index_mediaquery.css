@@ -25,7 +25,7 @@
     .ml-auto{
         text-align: center !important;
     }
-    .hero{
+    .site-wrap{
         overflow-x: hidden;
     }
 }
@@ -72,3 +72,26 @@
         justify-content: center;
     }
 }
+
+@media only screen and (max-width:1000px){
+    .cont{
+        display: flex;
+        flex-direction: column-reverse;   
+        align-items: center;
+    }
+    
+}
+
+@media only screen and (max-width:555px){
+    .cont{
+        display: flex;
+        flex-direction: column-reverse;   
+    }
+    .abtvd{
+        width: 350px;
+        height: 200px;
+    }
+}
+
+
+

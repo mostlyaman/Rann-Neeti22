@@ -1612,3 +1612,8 @@ h5,
   color: #fff;
   border-bottom: 1px solid rgba(255, 255, 255, 0.5);
 }
+
+.cont{
+  display: flex;
+    gap: 50px;
+  }
