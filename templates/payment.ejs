@@ -13,10 +13,9 @@
     <ul>
         <% for(let i=0;i<payments.length;i++){ %>
             <li>
-                <form action="/payment/order" method="post">
-                    <input name="paymentType" value="<%=payments[i].paymentType %>" readonly>
-                    <input name="amount" value="<%=payments[i].amount%>" readonly>
-                    <input name="id" value="<%=payments[i].id%>" readonly>
+                <form action="/payment/order" id="paymentForm" method="post">
+                    <input name="paymentType" id="paymentType" value="<%=payments[i].paymentType%>" readonly>
+                    <input name="id" id="id" type="hidden" value="<%= payments[i].id %>" readonly>
                     <button>Pay</button>
                 </form>
 

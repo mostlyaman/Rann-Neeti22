@@ -86,12 +86,11 @@ module.exports = { // event functions ==========================================
             payments.push({ paymentType: "user", amount: Number(process.env.AMOUNT), id: userDetail._id });
         }
 
-        // check the teams fees, for the teams whose team leader is current user\
-
+        // check the teams fees, for the teams whose team leader is current user
 
         for (let i = 0; i < teams.length; i++) {
             let team = await teamTable.findOne({ _id: teams[i].teamId });
-            if (team.teamLeader.toString() == userDetail._id.toString()) {
+            if (team.teamLeader.toString() == userDetail._id.toString() && team.paymentStatus == 0) {
                 let event = await module.exports.findEventById(teams[i].eventId);
                 payments.push({ paymentType: "team", amount: event.fees, id: team._id });
             }
@@ -150,7 +149,8 @@ module.exports = { // event functions ==========================================
         const userDetail = await userTable.findOne({ googleId: req.user.googleId });
         const eventDetail = await module.exports.findEventById(teamDetail.event);
 
-        if (teamDetail == null) {
+        // validtion of team id
+        if (teamDetail == null || userDetail == null) {
             return false;
         }
 

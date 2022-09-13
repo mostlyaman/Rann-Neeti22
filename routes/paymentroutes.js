@@ -7,7 +7,7 @@ const xid = require('xid-js');
 const PaymentDetail = require("../models/payment");
 const UserDetail = require("../models/user");
 const teamTable = require("../models/team");
-const { findAllPendingPayments } = require("../utils");
+const { findAllPendingPayments, findTeamById, findEventById, findEvent } = require("../utils");
 const { authCheck, liveCheck } = require("../middleware/auth");
 const payment = require("../models/payment");
 
@@ -36,8 +36,18 @@ router.get("/", [authCheck, liveCheck], async function (req, res, next) {
  */
 router.post("/order", [authCheck, liveCheck], async function (req, res, next) {
     // console.log("inside /order");
+    const paymentType = req.body.paymentType;
+    const id = req.body.id;
+
+    let amt = process.env.AMOUNT;
+    if (paymentType == "team") {
+        const teamDetail = await findTeamById(id);
+        const eventDetail = await findEventById(teamDetail.event);
+        amt = eventDetail.fees;
+    }
+
     params = {
-        amount: req.body.amount * 100,
+        amount: amt * 100,
         currency: "INR",
         receipt: xid.next(),
         payment_capture: "1",
@@ -108,7 +118,7 @@ router.post("/verify", [authCheck, liveCheck], async function (req, res, next) {
         }
         else {
             // update in user table
-            var userUpdated = await UserDetail.updateOne({ googleId: req.session.user.googleId }, { paymentStatus: 1 });
+            var userUpdated = await UserDetail.updateOne({ _id: id }, { paymentStatus: 1 });
         }
 
 
