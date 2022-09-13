@@ -1,0 +1,49 @@
+
+
+@media only screen and (max-width:768px) {
+    #game-name{
+        font-size: 32px !important;
+    }
+    #buttons {
+        flex-direction: row !important;
+        justify-content: space-around !important;
+    }
+    #buttons > div > button {
+        font-size: 14px !important;
+    }
+
+    .title-section > h2 {
+        font-size: 18px !important;
+    }
+
+    .title-section > p {
+        font-size: 15px !important;
+    }
+}
+
+@media only screen and (max-width:600px) {
+    #game-name{
+        font-size: 28px !important;
+    }
+    #buttons {
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+    #buttons > div {
+        padding-bottom: 5px;
+    }
+    #buttons > div > button {
+        font-size: 14px !important;
+    }
+
+    .title-section > h2 {
+        font-size: 18px !important;
+    }
+
+    .title-section > p {
+        font-size: 15px !important;
+    }
+
+}
+

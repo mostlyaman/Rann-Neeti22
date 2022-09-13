@@ -9,7 +9,7 @@
 
 
 
-    <link rel="stylesheet" href="fonts/icomoon/style.css">
+    <link rel="stylesheet" href="/fonts/icomoon/style.css">
 
     <link rel="stylesheet" href="/css/bootstrap/bootstrap.css">
     <link rel="stylesheet" href="/css/jquery-ui.css">
@@ -21,7 +21,7 @@
 
     <link rel="stylesheet" href="/css/bootstrap-datepicker.css">
 
-    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="/fonts/flaticon/font/flaticon.css">
 
     <link rel="stylesheet" href="/css/aos.css">
 
@@ -59,42 +59,54 @@
 
         <div class="">
             <div class="container">
-                <div class="row align-items-center " style=" margin-bottom: 35px; height: auto;">
+                <div class="row align-items-center" style=" margin-bottom: 35px; height: auto;">
                     <div class="mx-auto text-center" style="margin-top:20px;">
-                        <h1 class="text-white">Registration for <%= event.name%>
+                        <h1 class="text-white px-5 font-weight-bold" style="font-size:32px">Registration for <%= event.name%>
                         </h1>
                         <!-- <button class="btn btn-primary" style=" padding: 7px;
                   margin-top: 30px;
                   width: 45%;
                   border-radius: 30px;
                   font-size: 20px;">RuleBook</button> -->
+                  <hr color="#EE1E47" style="height:0.5px;box-shadow: 0 8px 2px -2px #EE1E47; max-width: 90%;">
                     </div>
                 </div>
             </div>
 
-            <div class="container align-items-center">
-                <form action="/events/createTeam?game=<%=event.name%>" method="POST" style="    display: flex;
-            flex-direction: column;
-            width: 45%;
-            margin: 40px auto;
+
+            <div class="container mx-auto row align-items-center">
+                <form class="mx-auto d-flex flex-column align-items-center" action="/events/createTeam?game=<%=event.name%>" method="POST" style="
+            width: 500px;
         ">
-                    <div class="title-section">
-                        <label class="heading" for="TeamName">Team Name</label>
+                    <div class="title-section container" >
+                        <label class="heading m-0 py-2" for="TeamName"">Team Name</label>
                     </div>
                     <input style="text-align: center;
                 width: 70%;
                 padding: 5px;
+                font-size: 16px;
                 margin-left: 30px;
+                margin-bottom: 20px;
                 border-radius: 10px;" name="TeamName" id="TeamName" type="text" placeholder="Enter Team Name"
                         autocomplete="off">
-
+                    
+                        <div class="title-section container" >
+                            <label class="heading m-0 py-2" for="CollegeName">College Name</label>
+                        </div>
+                        <input style="text-align: center;
+                        font-size: 16px;
+                    width: 70%;
+                    padding: 5px;
+                    margin-left: 30px;
+                    border-radius: 10px;" name="CollegeName" id="CollegeName" type="text" placeholder="Enter College Name"
+                            autocomplete="off">
                     <!-- <hr> -->
 
-                    <div class="title-section" style="margin-top:40px ;">
-                        <label class="heading" for="registration">Registration Fee - <%= event.fees%></label>
+                    <div class="title-section container" style="margin-top:40px ;">
+                        <label class="heading m-0 py-2" for="registration">Registration Fee - <%= event.fees%></label>
                     </div>
-                    <p>You have to pay this fees after registration, through payment portal.</p>
-                    <button style="    width: 30%;
+                    <p style="font-size:16px">You have to pay this fees after registration, through payment portal.</p>
+                    <button style="width: 30%;
                 padding: 10px;
                 border-radius: 30px;
                 margin-left: 30px;" class="btn btn-primary">Confirm</button>
@@ -104,23 +116,23 @@
         </div>
 
 
-        <script src="js/jquery-3.3.1.min.js"></script>
-        <script src="js/jquery-migrate-3.0.1.min.js"></script>
-        <script src="js/jquery-ui.js"></script>
+        <script src="/js/jquery-3.3.1.min.js"></script>
+        <script src="/js/jquery-migrate-3.0.1.min.js"></script>
+        <script src="/js/jquery-ui.js"></script>
         <script src="js/popper.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/owl.carousel.min.js"></script>
-        <script src="js/jquery.stellar.min.js"></script>
-        <script src="js/jquery.countdown.min.js"></script>
-        <script src="js/bootstrap-datepicker.min.js"></script>
-        <script src="js/jquery.easing.1.3.js"></script>
-        <script src="js/aos.js"></script>
-        <script src="js/jquery.fancybox.min.js"></script>
-        <script src="js/jquery.sticky.js"></script>
-        <script src="js/jquery.mb.YTPlayer.min.js"></script>
+        <script src="/js/bootstrap.min.js"></script>
+        <script src="/js/owl.carousel.min.js"></script>
+        <script src="/js/jquery.stellar.min.js"></script>
+        <script src="/js/jquery.countdown.min.js"></script>
+        <script src="/js/bootstrap-datepicker.min.js"></script>
+        <script src="/js/jquery.easing.1.3.js"></script>
+        <script src="/js/aos.js"></script>
+        <script src="/js/jquery.fancybox.min.js"></script>
+        <script src="/js/jquery.sticky.js"></script>
+        <script src="/js/jquery.mb.YTPlayer.min.js"></script>
 
 
-        <script src="js/main.js"></script>
+        <script src="/static/js/main.js"></script>
 </body>
 
 </html>
