@@ -1,14 +1,18 @@
 
 
+*{
+    color: white !important;
+}
+
 @media only screen and (max-width:768px) {
     #game-name{
         font-size: 32px !important;
     }
-    #buttons {
+    .buttons {
         flex-direction: row !important;
-        justify-content: space-around !important;
+        justify-content: center !important;
     }
-    #buttons > div > button {
+    .buttons > button {
         font-size: 14px !important;
     }
 
@@ -25,16 +29,15 @@
     #game-name{
         font-size: 28px !important;
     }
-    #buttons {
+    .buttons {
         flex-direction: column !important;
         justify-content: center !important;
         align-items: center !important;
     }
-    #buttons > div {
-        padding-bottom: 5px;
-    }
-    #buttons > div > button {
-        font-size: 14px !important;
+    .buttons > button {
+        font-size: 13px !important;
+        margin-bottom: 7px !important;
+        width: 27% !important;
     }
 
     .title-section > h2 {

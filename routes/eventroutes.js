@@ -42,7 +42,6 @@ router.get("/createTeam", [authCheck, liveCheck], async (req, res) => {
         event: event,
         user: req.session.user
     }
-
     res.render('createteam.ejs', context)
 })
 
