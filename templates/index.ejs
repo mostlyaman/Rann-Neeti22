@@ -56,7 +56,7 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
   <link rel="stylesheet" href="/css/index_mediaquery.css">
-
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
   <style>
     .hamburger {
       display: inline-block;
@@ -192,7 +192,7 @@
                 September to 2nd October (Tentative). Every aspect of the event will be completely managed by
                 the students with assistance from IIT Mandi.
               </div>
-              <div class="bx2">
+              <div class="bx2" id="ytvd">
                 <iframe class="abtvd" width="450" height="320" src="https://www.youtube.com/embed/OzGXRzlSukU"
                   title="IIT MANDI OFFICAL SPORTS FEST // RANN NEETI'17 // HIT THE SHUTTER" frameborder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -205,7 +205,74 @@
             </div>
           </div>
         </div>
+        <br><br><br><br><br>
+        <!-- <div class="container"
+        style="background:url('https://img.freepik.com/premium-vector/luxury-bright-red-lines-modern-sport-background_125759-132.jpg') center center/cover ; background-attachment: fixed; padding: 40px;"> -->
+        <div class="container">
+          <div class="row" id="counterr">
+
+            <div class="col-md-3 col-sm-6 countr">
+              <div class="counter" id="ct1">
+                <div class="counter-icon">
+                  <i class="fa fa-globe"></i>
+                </div>
+                <h3 style="color:#ee1e46">Registration</h3>
+                <span class="counter-value" style="color: #ee1e46;">1010</span>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-6 countr">
+              <div class="counter" id="ct2">
+                <div class="counter-icon">
+                  <i class="fa fa-globe"></i>
+                </div>
+                <h3 style="color:#ee1e46">Footfall</h3>
+                <span class="counter-value" style="color: #ee1e46;">5000</span>
+              </div>
+            </div>
+
+
+            <div class="col-md-3 col-sm-6 countr">
+              <div class="counter" id="ct3">
+                <div class="counter-icon">
+                  <i class="fa fa-globe"></i>
+                </div>
+                <h3 style="color:#ee1e46">Events</h3>
+                <span class="counter-value" style="color: #ee1e46;">11</span>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-6 countr">
+              <div class="counter" id="ct4">
+                <div class="counter-icon">
+                  <i class="fa fa-globe"></i>
+                </div>
+                <h3 style="color:#ee1e46">Colleges</h3>
+                <span class="counter-value" style="color: #ee1e46;">56</span>
+              </div>
+            </div>
+
+
+          </div>
+
+
+        </div>
       </div>
+      <!-- </div> -->
+      <!-- <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script> -->
+      <script>
+        $(document).ready(function () {
+          $('.counter-value').each(function () {
+            $(this).prop('Counter', 0).animate({
+              Counter: $(this).text()
+            }, {
+              duration: 3500,
+              easing: 'swing',
+              step: function (now) {
+                $(this).text(Math.ceil(now));
+              }
+            });
+          });
+        });
+      </script>
       <div style="background-color:black ;">
         <div id="notice" class="site-section">
           <div class="container">
@@ -532,7 +599,7 @@
             </div>
           </div>
         </div>
-        <footer class="py-3 my-4">
+        <footer class="py-3 ">
           <ul class="nav justify-content-center">
             <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
             <!-- <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li> -->
@@ -544,7 +611,7 @@
         </footer>
       </div>
   </div>
-  </div>
+  
 
 
 
@@ -570,3 +637,5 @@
 </body>
 
 </html>
+
+<!-- color = ee1e46 -->
