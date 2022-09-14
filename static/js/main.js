@@ -203,16 +203,27 @@ jQuery(document).ready(function($) {
 	  });
 
 
-	  if ( $('.owl-1-slider').length > 0 ) {
-			var owl4 = $('.owl-1-slider').owlCarousel({
+	  if ( $('.owl-4-slider').length > 0 ) {
+			var owl4 = $('.owl-4-slider').owlCarousel({
 		    loop: true,
 		    autoHeight: true,
 		    margin: 0,
-		    autoplay: false,
+		    autoplay: true,
 		    smartSpeed: 1000,
-		    items: 1,
+		    items: 4,
 		    nav: false,
 		    navText: ['<span class="icon-keyboard_backspace"></span>','<span class="icon-keyboard_backspace"></span>'],
+		    responsive:{
+	        0:{
+	            items:1
+	        },
+	        600:{
+	            items:3
+	        },
+	        1000:{
+	            items:4
+	        }
+	    	}
 			});
 
 			$('.js-custom-next-v2').click(function(e) {
