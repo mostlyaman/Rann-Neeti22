@@ -59,6 +59,8 @@ router.get("/joinTeam", async (req, res) => {
 })
 
 
+
+
 router.post("/joinTeam", [authCheck, liveCheck], async (req, res) => {
     const { teamId, college, phone } = req.body;
     let checker = await joinTeam(teamId, req);

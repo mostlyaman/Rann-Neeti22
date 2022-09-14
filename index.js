@@ -82,6 +82,7 @@ app.get("/", async (req, res) => {
     res.render("index", { authenticated: req.isAuthenticated() });
 })
 
+
 app.get("*", function (req, res) {
     res.status(404).send("<h1> Not Found! </h1>")
 })
