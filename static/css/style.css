@@ -1732,7 +1732,7 @@ h5,
 }
 @media screen and (max-width:1100px){
       #cont{
-        position: absolute;
+        /* position: absolute; */
         right: 5px;
       }
       .sze{
@@ -1743,12 +1743,35 @@ h5,
   overflow-y: hidden;
 }
 
-@media screen and
-    (min-width: 768px) and (max-width: 998px) {
-  .row{
-    display: flex;
-    column-gap: 100px;
-    padding-left: 130px;
+
+/* confirm.ejs_responsive */
+
+#team_form{
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center;
+  justify-content: center !important;
+  margin:70px auto auto auto !important;
+ 
+}
+#team_form #cont{
+  width:40% !important;
+}
+@media screen and ( max-width:900px) {
+  #team_form #cont{
+    width: 60% !important;
+  }
+}
+
+@media screen and ( max-width:550px){
+  #team_form #cont{
+    width: 80%!important;
+  }
+}
+
+@media screen and ( max-width:300px){
+  #team_form .btn-primary{
+    width: 45%!important;
   }
 }
 
