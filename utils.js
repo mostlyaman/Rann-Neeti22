@@ -1,7 +1,41 @@
 const payment = require("./models/payment");
+const fs = require('fs');
+const { parse } = require('json2csv');
 
 // Load config
 require("dotenv").config({ path: "./config/config.env" });
+
+async function saveTeamToCsvOnRegister(eventName, teamName, teamLeader) {
+    const date = new Date();
+    const dateString = date.getFullYear() + '-' +
+        (date.getMonth() + 1).toString().padStart(2, '0') + '-' +
+        date.getDate().toString().padStart(2, '0') + ':' +
+        date.getHours().toString().padStart(2, '0') + ':' +
+        date.getMinutes().toString().padStart(2, '0') + ':' +
+        date.getSeconds().toString().padStart(2, '0');
+
+    const data = {
+        name: teamName,
+        event: eventName,
+        teamLeader: teamLeader,
+        members: "",
+        createdAt: dateString,
+        paymentStatus: 0
+    }
+
+    // Save to CSV
+    const filename = "registeredTeams.csv";
+    let rows;
+
+    if (!fs.existsSync(filename)) {
+        rows = parse(data, { header: true });
+    } else {
+        rows = parse(data, { header: false });
+    }
+
+    fs.appendFileSync(filename, rows);
+    fs.appendFileSync(filename, "\r\n");
+}
 
 module.exports = { // event functions ===================================================================================================================================
     findAllEvents: async function (req) {
@@ -113,6 +147,9 @@ module.exports = { // event functions ==========================================
             return false;
         }
         // validation is done
+
+        // Save the registration details to a CSV
+        saveTeamToCsvOnRegister(event.name, TeamName, userDetail.firstName + " " + userDetail.lastName);
 
         // creating a new entry in team table
         var newteam = new teamTable({
