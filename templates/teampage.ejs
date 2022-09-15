@@ -47,6 +47,7 @@
             font-weight: bold;
             font-size: 20px;
             display: flex;
+            width: 100%;
             justify-content: center;
         }
 
@@ -62,22 +63,23 @@
         }
 
         .teaminfo {
+            transform: skewX(-14deg) translate(61%, 215px);
             padding: 12px;
             display: flex;
-            min-width: 25%;
-            width: auto;
+            /* min-width: 25%; */
+            width: 54%;
             flex-direction: column;
             justify-content: center;
             height: 300px;
-            margin: 0px 200px 100px 100px;
-            border: 2px solid white;
-            border-radius: 30px;
+            /* margin: 0px 200px 100px 100px; */
+            /* border: 2px solid white; */
+            /* border-radius: 30px; */
             backdrop-filter: blur(10px) saturate(200%);
             /* box-shadow: 23px -16px 82px -39px #ff0000; */
             text-align: center;
-            position: fixed;
+            /* position: fixed; */
             align-items: center;
-            max-width: 30%;
+            /* max-width: 30%; */
         }
 
         .teaminfo span {
@@ -86,8 +88,18 @@
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 18px;
+            font-size: 25px;
             height: 20%;
+        }
+
+        .teaminfo div span{
+            margin: 10px;
+        } 
+
+        .span{
+            font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 50px;
         }
 
         .player {
@@ -103,13 +115,21 @@
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 17px;
-            border-radius: 30px;
+            font-size: 18px;
+            /* border-radius: 30px; */
             backdrop-filter: blur(10px) saturate(120%);
             box-shadow: 0px 0px 18px -7px #ff0000;
         }
-    </style>
 
+        #cont{
+            width: 50%;
+            /* border: 2px solid red; */
+            height: 100vh;
+            transform: skewX(14deg) translateX(-113px);
+            background-color: black;
+        }
+    </style>
+    <link rel="stylesheet" href="/css/teampage_mediaquery.css">
 
 </head>
 
@@ -123,33 +143,115 @@
         <div class="site-mobile-menu-body"></div>
     </div>
 
-    <div id="page"
-        style="min-height: 100vh;height: auto ;display: flex;background:url('/images/sponcontbg.jpg') no-repeat center center/cover;flex-direction: column;">
-        <div class="cont">
+    <div id="page" style="display:flex ;background: url('https://i.pinimg.com/originals/10/ad/5a/10ad5a61469c0428c4701c602e8839e6.jpg') no-repeat center center/cover ;">
+        <div id="cont">
+            <div class="teaminfo">
+                <span class="span">Indian institute of technology
+                    mandi</span>
+                <div>
+                    <span >
+                        <%= leader.name %>
+                    </span>
+                    <span >
+                        <%= team._id %>
+                    </span>
+                    <span >1243644533</span>
+                </div>    
+            </div>
+        </div>
+        
+        <!-- <div class="cont">
             <div class="head">
                 <span>
                     <%= team.name%>
                 </span>
             </div>
-        </div>
-        <div style="display: flex;">
-            <div class="teaminfo" style="border:2px solid">
-                <span style="font-size: 25px; font-weight:bold; margin-bottom:50px">Indian institute of technology
-                    mandi</span>
-                <span style="margin:-15px 0px ;">
-                    <%= leader.name %>
-                </span>
-                <span style="margin:-15px 0px ;">
-                    <%= team._id %>
-                </span>
-                <span style="margin:-15px 0px ;">1243644533</span>
-            </div>
+        </div> -->
+        <div class="team" style="display: flex; width: 55%;">
+            
 
-            <div class="contain" style="display: flex;
-            flex-direction: column;
-            width: 30%;margin-left: 50%;">
+            <div class="contain" style="
+                width: 28%;
+    margin-left: 7%;
+    position: absolute;
+    height: 500px;
+    overflow-y: scroll;
+    top: 160px;
+">
 
 
+                <% for(let i=0; i<teamMembers.length; i++) {%>
+                    <div class="player">
+                        <span style="display: flex; align-items:center">
+                            <%= teamMembers[i].firstName %>
+
+                                <% if(user._id==leader._id) { %>
+                                    <i style="font-size: 25px;
+                            position: absolute;
+                            right: 14px;
+                        " class="material-icons" style="font-size:36px">close</i>
+
+                                    <% } %>
+                        </span>
+                        <Span>
+                            <%= teamMembers[i].email %>
+                        </Span>
+                    </div>
+                    <% } %>
+                <% for(let i=0; i<teamMembers.length; i++) {%>
+                    <div class="player">
+                        <span style="display: flex; align-items:center">
+                            <%= teamMembers[i].firstName %>
+
+                                <% if(user._id==leader._id) { %>
+                                    <i style="font-size: 25px;
+                            position: absolute;
+                            right: 14px;
+                        " class="material-icons" style="font-size:36px">close</i>
+
+                                    <% } %>
+                        </span>
+                        <Span>
+                            <%= teamMembers[i].email %>
+                        </Span>
+                    </div>
+                    <% } %>
+                <% for(let i=0; i<teamMembers.length; i++) {%>
+                    <div class="player">
+                        <span style="display: flex; align-items:center">
+                            <%= teamMembers[i].firstName %>
+
+                                <% if(user._id==leader._id) { %>
+                                    <i style="font-size: 25px;
+                            position: absolute;
+                            right: 14px;
+                        " class="material-icons" style="font-size:36px">close</i>
+
+                                    <% } %>
+                        </span>
+                        <Span>
+                            <%= teamMembers[i].email %>
+                        </Span>
+                    </div>
+                    <% } %>
+                <% for(let i=0; i<teamMembers.length; i++) {%>
+                    <div class="player">
+                        <span style="display: flex; align-items:center">
+                            <%= teamMembers[i].firstName %>
+
+                                <% if(user._id==leader._id) { %>
+                                    <i style="font-size: 25px;
+                            position: absolute;
+                            right: 14px;
+                        " class="material-icons" style="font-size:36px">close</i>
+
+                                    <% } %>
+                        </span>
+                        <Span>
+                            <%= teamMembers[i].email %>
+                        </Span>
+                    </div>
+                    <% } %>
                 <% for(let i=0; i<teamMembers.length; i++) {%>
                     <div class="player">
                         <span style="display: flex; align-items:center">
