@@ -1,0 +1,32 @@
+@media only screen and (max-width:900px){
+    #page{
+        flex-direction: column;
+    align-items: center;
+    }
+    .contain{
+        height: unset !important; 
+     overflow-y: unset !important;
+    }
+
+    #conti{
+        width: 100% !important;
+    }
+
+    .teaminfo{
+        width: 100% !important;
+    }
+
+    .team{
+        width: 100% !important;
+    }
+}
+
+@media only screen and (max-width:400px){
+    .player{
+        font-size: 15px !important;
+    }
+
+    .teaminfo span{
+        font-size: 20px !important;
+    }
+}
