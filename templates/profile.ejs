@@ -24,6 +24,8 @@
     <link rel="stylesheet" href="/css/aos.css">
 
     <link rel="stylesheet" href="/css/style.css">
+    
+    <link rel="stylesheet" href="/css/profile_mediaquery.css">
 
     <Style>
         * {
@@ -48,6 +50,14 @@
         div span {
             font-size: 20px;
             color: white
+        }
+
+        .pop{
+                display: flex;
+    flex-wrap: wrap;
+    /* justify-content: center; */
+    margin: 0px 35px;
+    font-size: 21px;
         }
     </Style>
 
@@ -92,7 +102,7 @@
                     </div>
                 </div>
                 <hr>
-                <div style="width: 100%;
+                <div  style="width: 100%;
                 display: flex;
                 margin: 15px;
                 flex-direction: column;
@@ -107,25 +117,26 @@
                 </div>
             </div>
 
-            <div style="    margin-top: 150px;
+            <div class="register" style="    margin-top: 150px;
             margin-left: 100px;">
-                <div id="register" style="    margin: 40px auto;">
+                <div id="register" style="    margin: 40px 0px auto auto;">
                     <div class="title-section">
                         <h2 style="font-size:35px ;" class="heading">Events Registered</h2>
                     </div>
 
-
-                    <%if(teams.length===0) {%>
-                        <p>No events registered yet</p>
-                        <% } else {%>
-
-                            <%for(let i=0;i < teams.length;i++){ %>
-                                <p>
-                                    <a href="/team?teamId=<%=teams[i]._id%>">
-                                        <%= teams[i].name %>
-                                    </a>
-                                </p>
-                                <%} }%>
+                    <div class="pop">
+                        <%if(teams.length===0) {%>
+                            <p>No events registered yet</p>
+                            <% } else {%>
+    
+                                <%for(let i=0;i < teams.length;i++){ %>
+                                    <p style="margin-bottom: 0px;">
+                                        <a style="color: white;" href="/team?teamId=<%=teams[i]._id%>">
+                                            <%= teams[i].name %>
+                                        </a>
+                                    </p>
+                                    <%} }%>
+                    </div>
                 </div>
             </div>
 
