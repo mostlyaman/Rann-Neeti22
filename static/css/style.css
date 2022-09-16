@@ -1725,20 +1725,6 @@ h5,
   box-shadow: 10px 10px 5px -10px red
 }
 
-@media screen and (max-width:1200px){
-      .sze{
-        font-size: 0.70em !important;
-      }
-}
-@media screen and (max-width:1100px){
-      #cont{
-        /* position: absolute; */
-        right: 5px;
-      }
-      .sze{
-        font-size: 0.70em !important;
-      }
-}
 .row{
   overflow-y: hidden;
 }

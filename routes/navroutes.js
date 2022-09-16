@@ -9,7 +9,8 @@ router.get("/profile", [authCheck, liveCheck], async (req, res) => {
 
     context = {
         user: userDetail,
-        teams: userTeams
+        teams: userTeams,
+        authenticated: req.isAuthenticated()
     }
     // users team
     res.render("profile", context);

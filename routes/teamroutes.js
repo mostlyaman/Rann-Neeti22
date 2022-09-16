@@ -5,7 +5,10 @@ const { authCheck, liveCheck } = require("../middleware/auth");
 const router = require("express").Router();
 
 router.get("/ourteam", async (req, res) => {
-    res.render('ourteam.ejs');
+    context = {
+        authenticated: req.isAuthenticated()
+    }
+    res.render('ourteam.ejs', context);
 })
 
 router.get("/team", [authCheck, liveCheck], async (req, res) => {
@@ -24,7 +27,8 @@ router.get("/team", [authCheck, liveCheck], async (req, res) => {
         team: teamDetail,
         teamMembers: members,
         leader: teamLeader,
-        user: req.user
+        user: req.user,
+        authenticated: req.isAuthenticated()
     }
     res.render("teampage", context);
 })

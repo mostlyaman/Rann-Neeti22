@@ -40,7 +40,8 @@ router.get("/createTeam", [authCheck, liveCheck], async (req, res) => {
 
     const context = {
         event: event,
-        user: req.session.user
+        user: req.session.user,
+        authenticated: req.isAuthenticated()
     }
     res.render('createteam.ejs', context)
 })
@@ -51,11 +52,14 @@ router.post("/createTeam", [authCheck, liveCheck], async (req, res) => {
 
     // validation need to  be added here
     let val = await createTeam(req, event);
-    res.redirect("/profile");
+    res.redirect("/profile", context);
 })
 
 router.get("/joinTeam", async (req, res) => {
-    res.render('confirm');
+    const context = {
+        authenticated: req.isAuthenticated()
+    }
+    res.render('confirm', context);
 })
 
 

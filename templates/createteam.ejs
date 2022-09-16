@@ -31,9 +31,9 @@
     <style>
         @media only screen and (max-width:500px) {
 
-            * {
+            /* * {
                 font-size: 0.5rem;
-            }
+            } */
 
             input {
                 font-size: 10px;
@@ -48,14 +48,7 @@
     <div class="site-wrap"
         style="background: url('/images/createteambg.jpeg') no-repeat center center/cover; height:auto; min-height: 100vh;">
 
-        <div class="site-mobile-menu site-navbar-target">
-            <div class="site-mobile-menu-header">
-                <div class="site-mobile-menu-close">
-                    <span class="icon-close2 js-menu-toggle"></span>
-                </div>
-            </div>
-            <div class="site-mobile-menu-body"></div>
-        </div>
+        <%- include('partials/navbar.ejs') %>
 
         <div class="">
             <div class="container">

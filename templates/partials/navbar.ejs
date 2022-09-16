@@ -1,3 +1,60 @@
+<style>
+  @media screen and (max-width:1150px) {
+    .site-logo {
+      position: unset !important;
+    }
+
+    h3 {
+      font-size: 23px !important;
+    }
+  }
+
+  * {
+    scroll-behavior: smooth;
+    padding: 0px;
+    margin: 0px;
+    color: white;
+  }
+
+  .contactbox span {
+    margin: 3px;
+  }
+
+  #register {
+
+    width: 42%;
+    border-radius: 30px;
+    font-size: 13.5px;
+  }
+
+  #hamburger {
+    position: absolute;
+
+  }
+
+  #cont {
+    position: absolute;
+    right: 10px;
+  }
+
+  .sze {
+    letter-spacing: unset !important;
+    padding: 0px 9px !important;
+    color: #fff;
+    font-size: 16px !important;
+    display: inline-block;
+    text-decoration: none !important;
+    text-transform: unset !important
+  }
+</style>
+<div class="site-mobile-menu site-navbar-target">
+  <div class="site-mobile-menu-header">
+    <div class="site-mobile-menu-close">
+      <span class="icon-close2 js-menu-toggle"></span>
+    </div>
+  </div>
+  <div class="site-mobile-menu-body"></div>
+</div>
 <header class="site-navbar py-2" role="banner">
   <div class="">
     <div class="d-flex align-items-center">
@@ -20,7 +77,6 @@
             <li><a href="/events" class="nav-link sze">Events</a></li>
             <li><a href="#sponsers" class="nav-link sze">Sponsors</a></li>
             <li><a href="#contact" class="nav-link sze">Contact</a></li>
-            <li><a href="" class="nav-link sze">About Us</a></li>
             <li><a href="/ourteam" class="nav-link sze">Our Team</a></li>
             <% if(!authenticated){ %>
               <li>
