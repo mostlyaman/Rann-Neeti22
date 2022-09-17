@@ -1240,6 +1240,10 @@ h5,
   width: 100%;
 }
 
+.heading{
+  text-transform: uppercase !important;
+}
+
 .widget-vs img {
   max-width: 120px;
 }
@@ -1299,7 +1303,6 @@ h5,
   position: relative;
   padding-left: 30px;
   padding-top: 15px;
-   /* width: 150px; */
 }
 
 .title-section .heading:before {
