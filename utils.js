@@ -185,13 +185,14 @@ module.exports = { // event functions ==========================================
         let maxTeamsize = eventDetail.teamSize;
         let currentTeamSize = teamDetail.members.length;
 
-        if (maxTeamsize > currentTeamSize) {
+        if (maxTeamsize > currentTeamSize + 1) {
             await userTable.updateOne({ googleId: userDetail.googleId }, { $push: { teams: { teamId: teamId, eventId: eventDetail._id } } });
             await eventTable.updateOne({ _id: teamDetail.event }, { $push: { registeredUsers: { user_id: userDetail._id } } });
             await teamTable.updateOne({ _id: teamId }, { $push: { members: { member_id: userDetail._id } } });
             return true;
         }
         else {
+            console.log("Team full");
             return false;
         }
     },

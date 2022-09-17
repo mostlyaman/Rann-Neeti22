@@ -5,6 +5,7 @@ const passport = require("passport");
 router.get("/logout", (req, res) => {
     if (req.session)
         req.session.destroy();
+
     res.redirect("/");
 });
 
@@ -19,6 +20,7 @@ router.get(
     function (req, res) {
         // console.log('req.user') // user info
         // Successful authentication, redirect success.
+        req.flash("message", "Logged in Succesfully");
         if (process.env.NODE_ENV == "development") {
             res.redirect(req.session.returnTo || "/");
         } else if (process.env.NODE_ENV == "production") {
