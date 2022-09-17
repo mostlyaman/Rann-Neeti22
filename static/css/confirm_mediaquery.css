@@ -1,0 +1,15 @@
+
+@media only screen and (max-width:690px){
+    #conti{
+        width: 55% !important; 
+    }
+    .btn{
+        font-size: 13px !important;
+    }
+}
+@media only screen and (max-width:450px){
+    #conti{
+        width: 83% !important; 
+    }
+}
+

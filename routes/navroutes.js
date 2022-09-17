@@ -9,11 +9,16 @@ router.get("/profile", [authCheck, liveCheck], async (req, res) => {
 
     context = {
         user: userDetail,
-        teams: userTeams
+        teams: userTeams,
+        authenticated: req.isAuthenticated(),
+        message: req.flash("message")
     }
     // users team
     res.render("profile", context);
 })
 
+router.get("/ourteam", async (req, res) => {
+    res.render('ourteam.ejs', { authenticated: req.isAuthenticated() });
+})
 
 module.exports = router

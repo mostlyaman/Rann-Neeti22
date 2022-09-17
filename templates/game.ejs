@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="/fonts/flaticon/font/flaticon.css" />
 
   <link rel="stylesheet" href="/css/aos.css" />
-
+  <link rel="stylesheet" href="/css/navbar.css">
   <link rel="stylesheet" href="/css/style.css" />
   <link rel="stylesheet" href="/css/game_mediaquery.css" />
 
@@ -38,6 +38,10 @@
       margin: 0px 10px;
       width: 20%
     }
+
+    .site-navbar{
+      position: unset;
+    }
   </style>
   <title>
     <%=event.name %>|RannNeeti-22
@@ -46,13 +50,9 @@
 
 <body>
   <div class="site-wrap">
-    <div class="site-mobile-menu site-navbar-target">
-      <div class="site-mobile-menu-header">
-        <div class="site-mobile-menu-close">
-          <span class="icon-close2 js-menu-toggle"></span>
-        </div>
-      </div>
-      <div class="site-mobile-menu-body"></div>
+
+    <div style="background-color:black ;">
+      <%- include('partials/navbar.ejs') %>
     </div>
 
     <div class="overlay" style=" padding: 2px;background-color: rgb(0, 0, 0, 0.5)">
@@ -115,6 +115,17 @@
           </h2>
         </div>
       </div>
+
+      <div id="teamSize">
+        <div class="title-section">
+          <h2 class="heading m-0 py-1" style="font-size: 28px">
+            Team-Size : <%= event.teamSize %>
+          </h2>
+
+
+        </div>
+      </div>
+
     </div>
   </div>
 

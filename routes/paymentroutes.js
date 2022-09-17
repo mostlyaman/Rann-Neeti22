@@ -27,7 +27,11 @@ let razorPayInstance = new Razorpay({
  */
 router.get("/", [authCheck, liveCheck], async function (req, res, next) {
     const payments = await findAllPendingPayments(req.user);
-    res.render("payment", { payments });
+    const context = {
+        authenticated: req.isAuthenticated(),
+        payments: payments
+    }
+    res.render("payment", context);
 });
 
 /**
@@ -136,13 +140,13 @@ router.post("/verify", [authCheck, liveCheck], async function (req, res, next) {
                     throw err;
                 }
                 // Render payment success page, if saved succeffully
+                req.flash("message", "Payment successfull");
                 res.redirect("/");
             }
         );
     } else {
-        res.render("payment/fail", {
-            title: "Payment verification failed",
-        });
+        req.flash("message", "Sorry, unable to make payment");
+        res.redirect("/");
     }
 });
 

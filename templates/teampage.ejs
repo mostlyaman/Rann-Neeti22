@@ -8,7 +8,7 @@
     <title>Team | <%= team.name %>
     </title>
 
-    <link rel="stylesheet" href="fonts/icomoon/style.css">
+    <!-- <link rel="stylesheet" href="/fonts/icomoon/style.css"> -->
 
     <link rel="stylesheet" href="/css/bootstrap/bootstrap.css">
     <link rel="stylesheet" href="/css/jquery-ui.css">
@@ -26,16 +26,17 @@
 
     <link rel="stylesheet" href="/css/style.css">
 
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-    <link rel="stylesheet" href="/css/mediaquery.css">
+    <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/teampage_mediaquery.css">
 
     <style>
         .head span {
             font-size: 50px;
-            /* text-shadow: 0px 0px 18px red; */
             line-height: 58px;
             margin: 0px -5px;
+
+            text-shadow: 4px 3px 11px red;
         }
 
         .head {
@@ -51,35 +52,29 @@
             justify-content: center;
         }
 
+
+
         .cont {
             padding-top: 5rem;
             width: 100%;
             height: 249px;
             color: white;
-            transform: skewy(3.5deg) translatey(-81px);
+            transform: skewy(3.5deg) translatey(-58px);
             padding-top: 2.5rem;
-            background-color: #7d01011c;
-            border-bottom: 2px solid #ff00005e;
         }
 
         .teaminfo {
-            transform: skewX(-14deg) translate(61%, 215px);
             padding: 12px;
             display: flex;
-            /* min-width: 25%; */
             width: 54%;
+            margin: auto;
             flex-direction: column;
             justify-content: center;
             height: 300px;
-            /* margin: 0px 200px 100px 100px; */
-            /* border: 2px solid white; */
-            /* border-radius: 30px; */
-            backdrop-filter: blur(10px) saturate(200%);
-            /* box-shadow: 23px -16px 82px -39px #ff0000; */
             text-align: center;
-            /* position: fixed; */
+
             align-items: center;
-            /* max-width: 30%; */
+
         }
 
         .teaminfo span {
@@ -92,14 +87,18 @@
             height: 20%;
         }
 
-        .teaminfo div span{
+        .teaminfo div span {
             margin: 10px;
-        } 
+        }
 
-        .span{
+        .span {
             font-size: 25px;
-    font-weight: bold;
-    margin-bottom: 50px;
+            font-weight: bold;
+            margin-bottom: 50px;
+        }
+
+        .contain::-webkit-scrollbar {
+            display: none;
         }
 
         .player {
@@ -121,183 +120,105 @@
             box-shadow: 0px 0px 18px -7px #ff0000;
         }
 
-        #cont{
+        #conti {
             width: 50%;
-            /* border: 2px solid red; */
-            height: 100vh;
-            transform: skewX(14deg) translateX(-113px);
-            background-color: black;
+            background-color: #00000047;
         }
     </style>
     <link rel="stylesheet" href="/css/teampage_mediaquery.css">
 
 </head>
 
-<div class="site-wrap ">
-    <div class="site-mobile-menu site-navbar-target">
-        <div class="site-mobile-menu-header">
-            <div class="site-mobile-menu-close">
-                <span class="icon-close2 js-menu-toggle"></span>
-            </div>
-        </div>
-        <div class="site-mobile-menu-body"></div>
-    </div>
+<body>
 
-    <div id="page" style="display:flex ;background: url('https://i.pinimg.com/originals/10/ad/5a/10ad5a61469c0428c4701c602e8839e6.jpg') no-repeat center center/cover ;">
-        <div id="cont">
-            <div class="teaminfo">
-                <span class="span">Indian institute of technology
-                    mandi</span>
-                <div>
-                    <span >
-                        <%= leader.name %>
-                    </span>
-                    <span >
-                        <%= team._id %>
-                    </span>
-                    <span >1243644533</span>
-                </div>    
-            </div>
+    <div class="site-wrap" style="min-height: 63vh;height: auto; background-color: black;">
+        <div style="background-color:black ;">
+            <%- include('partials/navbar.ejs') %>
         </div>
-        
-        <!-- <div class="cont">
+        <div class="site-mobile-menu site-navbar-target">
+            <div class="site-mobile-menu-header">
+                <div class="site-mobile-menu-close">
+                    <span class="icon-close2 js-menu-toggle"></span>
+                </div>
+            </div>
+            <div class="site-mobile-menu-body"></div>
+        </div>
+
+        <div class="cont"
+            style="background: url('https://media.istockphoto.com/photos/abstract-red-and-black-are-light-pattern-with-the-gradient-is-the-picture-id1205633216?b=1&k=20&m=1205633216&s=612x612&w=0&h=Usx41mX7-MfboMFrH-RKx-lc9T1JDBtP4pp1ntQdaSk=') no-repeat center center/cover;">
             <div class="head">
                 <span>
                     <%= team.name%>
                 </span>
             </div>
-        </div> -->
-        <div class="team" style="display: flex; width: 55%;">
-            
+        </div>
+        <div id="page"
+            style="display: flex;width: 94%; min-height: 67vh; height: auto;margin: auto;align-items:  center;box-shadow: 1px 1px 50px -10px red;">
 
-            <div class="contain" style="
-                width: 28%;
-    margin-left: 7%;
-    position: absolute;
-    height: 500px;
-    overflow-y: scroll;
-    top: 160px;
-">
-
-
-                <% for(let i=0; i<teamMembers.length; i++) {%>
-                    <div class="player">
-                        <span style="display: flex; align-items:center">
-                            <%= teamMembers[i].firstName %>
-
-                                <% if(user._id==leader._id) { %>
-                                    <i style="font-size: 25px;
-                            position: absolute;
-                            right: 14px;
-                        " class="material-icons" style="font-size:36px">close</i>
-
-                                    <% } %>
+            <div id="conti">
+                <div class="teaminfo">
+                    <span class="span">Indian institute of technology
+                        mandi</span>
+                    <div>
+                        <span>
+                            <%= leader.name %>
                         </span>
-                        <Span>
-                            <%= teamMembers[i].email %>
-                        </Span>
-                    </div>
-                    <% } %>
-                <% for(let i=0; i<teamMembers.length; i++) {%>
-                    <div class="player">
-                        <span style="display: flex; align-items:center">
-                            <%= teamMembers[i].firstName %>
-
-                                <% if(user._id==leader._id) { %>
-                                    <i style="font-size: 25px;
-                            position: absolute;
-                            right: 14px;
-                        " class="material-icons" style="font-size:36px">close</i>
-
-                                    <% } %>
+                        <span>
+                            <%= team._id %>
                         </span>
-                        <Span>
-                            <%= teamMembers[i].email %>
-                        </Span>
+                        <span>1243644533</span>
+
+                        <form action="/team/deleteTeam" method="post">
+                            <input type="hidden" value="<%= team._id %>" name="teamId">
+                            <button>Delete Team</button>
+                        </form>
                     </div>
-                    <% } %>
-                <% for(let i=0; i<teamMembers.length; i++) {%>
-                    <div class="player">
-                        <span style="display: flex; align-items:center">
-                            <%= teamMembers[i].firstName %>
-
-                                <% if(user._id==leader._id) { %>
-                                    <i style="font-size: 25px;
-                            position: absolute;
-                            right: 14px;
-                        " class="material-icons" style="font-size:36px">close</i>
-
-                                    <% } %>
-                        </span>
-                        <Span>
-                            <%= teamMembers[i].email %>
-                        </Span>
-                    </div>
-                    <% } %>
-                <% for(let i=0; i<teamMembers.length; i++) {%>
-                    <div class="player">
-                        <span style="display: flex; align-items:center">
-                            <%= teamMembers[i].firstName %>
-
-                                <% if(user._id==leader._id) { %>
-                                    <i style="font-size: 25px;
-                            position: absolute;
-                            right: 14px;
-                        " class="material-icons" style="font-size:36px">close</i>
-
-                                    <% } %>
-                        </span>
-                        <Span>
-                            <%= teamMembers[i].email %>
-                        </Span>
-                    </div>
-                    <% } %>
-                <% for(let i=0; i<teamMembers.length; i++) {%>
-                    <div class="player">
-                        <span style="display: flex; align-items:center">
-                            <%= teamMembers[i].firstName %>
-
-                                <% if(user._id==leader._id) { %>
-                                    <i style="font-size: 25px;
-                            position: absolute;
-                            right: 14px;
-                        " class="material-icons" style="font-size:36px">close</i>
-
-                                    <% } %>
-                        </span>
-                        <Span>
-                            <%= teamMembers[i].email %>
-                        </Span>
-                    </div>
-                    <% } %>
+                </div>
             </div>
+            <div class="team" style="width: 50%; ">
+                <div class="contain" style="height: 400px;overflow-y: scroll;width: 75%;margin: auto;">
+                    <% for(let i=0; i<teamMembers.length; i++) {%>
+                        <div class="player">
+                            <span style="display: flex; align-items:center">
+                                <%= teamMembers[i].firstName %>
+                                    <% if(user._id==leader._id) { %>
 
+                                        <form method="post" action="/team/deleteMember">
+                                            <input type="hidden" value="<%=teamMembers[i]._id%>" name="memberId">
+                                            <input type="hidden" value="<%=team._id%>" name="teamId">
+                                            <button type="submit" class="btn-close" aria-label="Close"
+                                                style="position: fixed; margin-right: 7px; color: white;">Remove</button>
+                                        </form>
+                                        <% } %>
+                            </span>
+                            <Span>
+                                <%= teamMembers[i].email %>
+                            </Span>
+                        </div>
+                        <% } %>
+                </div>
+            </div>
         </div>
 
-    </div>
 
 
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <script src="js/jquery-migrate-3.0.1.min.js"></script>
+        <script src="js/jquery-ui.js"></script>
+        <script src="js/popper.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/owl.carousel.min.js"></script>
+        <script src="js/jquery.stellar.min.js"></script>
+        <script src="js/jquery.countdown.min.js"></script>
+        <script src="js/bootstrap-datepicker.min.js"></script>
+        <script src="js/jquery.easing.1.3.js"></script>
+        <script src="js/aos.js"></script>
+        <script src="js/jquery.fancybox.min.js"></script>
+        <script src="js/jquery.sticky.js"></script>
+        <script src="js/jquery.mb.YTPlayer.min.js"></script>
 
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/jquery-migrate-3.0.1.min.js"></script>
-    <script src="js/jquery-ui.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/jquery.stellar.min.js"></script>
-    <script src="js/jquery.countdown.min.js"></script>
-    <script src="js/bootstrap-datepicker.min.js"></script>
-    <script src="js/jquery.easing.1.3.js"></script>
-    <script src="js/aos.js"></script>
-    <script src="js/jquery.fancybox.min.js"></script>
-    <script src="js/jquery.sticky.js"></script>
-    <script src="js/jquery.mb.YTPlayer.min.js"></script>
 
-
-    <script src="js/main.js"></script>
-
-    <body>
-
-    </body>
+        <script src="js/main.js"></script>
+</body>
 
 </html>

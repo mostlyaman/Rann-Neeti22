@@ -40,7 +40,8 @@ router.get("/createTeam", [authCheck, liveCheck], async (req, res) => {
 
     const context = {
         event: event,
-        user: req.session.user
+        user: req.session.user,
+        authenticated: req.isAuthenticated()
     }
     res.render('createteam.ejs', context)
 })
@@ -51,11 +52,19 @@ router.post("/createTeam", [authCheck, liveCheck], async (req, res) => {
 
     // validation need to  be added here
     let val = await createTeam(req, event);
+    if (!val) {
+        req.flash("message", "Sorry, unable to create a team with these details");
+    } else {
+        req.flash("message", "Team created successfully");
+    }
     res.redirect("/profile");
 })
 
 router.get("/joinTeam", async (req, res) => {
-    res.render('confirm');
+    const context = {
+        authenticated: req.isAuthenticated()
+    }
+    res.render('confirm', context);
 })
 
 
@@ -65,10 +74,13 @@ router.post("/joinTeam", [authCheck, liveCheck], async (req, res) => {
     const { teamId, college, phone } = req.body;
     let checker = await joinTeam(teamId, req);
 
+
     if (checker)
-        res.redirect("/profile");
+        req.flash("message", "Team joined successfully");
     else
-        res.send("Not joined");
+        req.flash("message", "Sorry, unable to join team");
+
+    res.redirect("/profile");
 })
 
 module.exports = router;
