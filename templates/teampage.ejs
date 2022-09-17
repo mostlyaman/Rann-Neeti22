@@ -8,7 +8,7 @@
     <title>Team | <%= team.name %>
     </title>
 
-    <link rel="stylesheet" href="fonts/icomoon/style.css">
+    <link rel="stylesheet" href="/fonts/icomoon/style.css">
 
     <link rel="stylesheet" href="/css/bootstrap/bootstrap.css">
     <link rel="stylesheet" href="/css/jquery-ui.css">
@@ -29,7 +29,9 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <link rel="stylesheet" href="/css/mediaquery.css">
-
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <style>
         .head span {
             font-size: 50px;
@@ -92,14 +94,14 @@
             height: 20%;
         }
 
-        .teaminfo div span{
+        .teaminfo div span {
             margin: 10px;
-        } 
+        }
 
-        .span{
+        .span {
             font-size: 25px;
-    font-weight: bold;
-    margin-bottom: 50px;
+            font-weight: bold;
+            margin-bottom: 50px;
         }
 
         .player {
@@ -121,7 +123,7 @@
             box-shadow: 0px 0px 18px -7px #ff0000;
         }
 
-        #cont{
+        #cont {
             width: 50%;
             /* border: 2px solid red; */
             height: 100vh;
@@ -143,23 +145,32 @@
         <div class="site-mobile-menu-body"></div>
     </div>
 
-    <div id="page" style="display:flex ;background: url('https://i.pinimg.com/originals/10/ad/5a/10ad5a61469c0428c4701c602e8839e6.jpg') no-repeat center center/cover ;">
+    <div id="page"
+        style="display:flex ;background: url('https://i.pinimg.com/originals/10/ad/5a/10ad5a61469c0428c4701c602e8839e6.jpg') no-repeat center center/cover ;">
         <div id="cont">
             <div class="teaminfo">
                 <span class="span">Indian institute of technology
                     mandi</span>
                 <div>
-                    <span >
+                    <span>
                         <%= leader.name %>
                     </span>
-                    <span >
+                    <span>
                         <%= team._id %>
                     </span>
-                    <span >1243644533</span>
-                </div>    
+                    <span>1243644533</span>
+
+                    <% if(user._id==leader._id) { %>
+                        <form action="/team/deleteTeam" method="post">
+                            <input type="hidden" value="<%=team._id%>" name="teamId">
+                            <button type="submit" class="btn btn-danger">Delete Team</button>
+                        </form>
+
+                        <% } %>
+                </div>
             </div>
         </div>
-        
+
         <!-- <div class="cont">
             <div class="head">
                 <span>
@@ -168,7 +179,7 @@
             </div>
         </div> -->
         <div class="team" style="display: flex; width: 55%;">
-            
+
 
             <div class="contain" style="
                 width: 28%;
@@ -186,83 +197,14 @@
                             <%= teamMembers[i].firstName %>
 
                                 <% if(user._id==leader._id) { %>
-                                    <i style="font-size: 25px;
-                            position: absolute;
-                            right: 14px;
-                        " class="material-icons" style="font-size:36px">close</i>
-
-                                    <% } %>
-                        </span>
-                        <Span>
-                            <%= teamMembers[i].email %>
-                        </Span>
-                    </div>
-                    <% } %>
-                <% for(let i=0; i<teamMembers.length; i++) {%>
-                    <div class="player">
-                        <span style="display: flex; align-items:center">
-                            <%= teamMembers[i].firstName %>
-
-                                <% if(user._id==leader._id) { %>
-                                    <i style="font-size: 25px;
-                            position: absolute;
-                            right: 14px;
-                        " class="material-icons" style="font-size:36px">close</i>
-
-                                    <% } %>
-                        </span>
-                        <Span>
-                            <%= teamMembers[i].email %>
-                        </Span>
-                    </div>
-                    <% } %>
-                <% for(let i=0; i<teamMembers.length; i++) {%>
-                    <div class="player">
-                        <span style="display: flex; align-items:center">
-                            <%= teamMembers[i].firstName %>
-
-                                <% if(user._id==leader._id) { %>
-                                    <i style="font-size: 25px;
-                            position: absolute;
-                            right: 14px;
-                        " class="material-icons" style="font-size:36px">close</i>
-
-                                    <% } %>
-                        </span>
-                        <Span>
-                            <%= teamMembers[i].email %>
-                        </Span>
-                    </div>
-                    <% } %>
-                <% for(let i=0; i<teamMembers.length; i++) {%>
-                    <div class="player">
-                        <span style="display: flex; align-items:center">
-                            <%= teamMembers[i].firstName %>
-
-                                <% if(user._id==leader._id) { %>
-                                    <i style="font-size: 25px;
-                            position: absolute;
-                            right: 14px;
-                        " class="material-icons" style="font-size:36px">close</i>
-
-                                    <% } %>
-                        </span>
-                        <Span>
-                            <%= teamMembers[i].email %>
-                        </Span>
-                    </div>
-                    <% } %>
-                <% for(let i=0; i<teamMembers.length; i++) {%>
-                    <div class="player">
-                        <span style="display: flex; align-items:center">
-                            <%= teamMembers[i].firstName %>
-
-                                <% if(user._id==leader._id) { %>
-                                    <i style="font-size: 25px;
-                            position: absolute;
-                            right: 14px;
-                        " class="material-icons" style="font-size:36px">close</i>
-
+                                    <form action="/team/deleteMember" method="post">
+                                        <input type="hidden" name="teamId" value="<%= team._id%>">
+                                        <input type="hidden" name="memberId" value="<%= teamMembers[i]._id %>">
+                                        <button type="submit" class="btn-close btn-close-white" aria-label="Close"
+                                            style="
+                                        position: absolute;
+                                        right: 14px;"></button>
+                                    </form>
                                     <% } %>
                         </span>
                         <Span>
@@ -295,6 +237,10 @@
 
 
     <script src="js/main.js"></script>
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
 
     <body>
 

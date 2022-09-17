@@ -1,12 +1,8 @@
 const { application } = require("express");
-const { findAllEvents, findEvent, isRegisteredforEvent, createTeam, joinTeam, findTeamById, findAllMembersOfTeam, userDetails, findUserById } = require("../utils.js");
+const { findAllEvents, findEvent, isRegisteredforEvent, createTeam, joinTeam, findTeamById, findAllMembersOfTeam, userDetails, findUserById, deleteTeamMember, deleteTeam } = require("../utils.js");
 const { authCheck, liveCheck } = require("../middleware/auth");
 
 const router = require("express").Router();
-
-router.get("/ourteam", async (req, res) => {
-    res.render('ourteam.ejs');
-})
 
 router.get("/team", [authCheck, liveCheck], async (req, res) => {
     const teamId = req.query.teamId;
@@ -29,4 +25,17 @@ router.get("/team", [authCheck, liveCheck], async (req, res) => {
     res.render("teampage", context);
 })
 
+router.post("/team/deleteMember", [authCheck, liveCheck], async (req, res) => {
+    const teamId = req.body.teamId;
+    const memberId = req.body.memberId;
+
+    await deleteTeamMember(teamId, memberId);
+    res.redirect("/profile");
+})
+
+router.post("/team/deleteTeam", [authCheck, liveCheck], async (req, res) => {
+    const teamId = req.body.teamId;
+    await deleteTeam(teamId, req.user);
+    res.redirect("/profile");
+})
 module.exports = router

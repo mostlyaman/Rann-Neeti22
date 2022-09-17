@@ -66,9 +66,11 @@ module.exports = { // event functions ==========================================
         const userTeams = userDetail.teams;
         let teams = [];
 
-        for (let i = 0; i < userTeams.length; i++) {
-            let team = await module.exports.findTeamById(userTeams[i].teamId)
-            teams.push(team);
+        if (userDetail) {
+            for (let i = 0; i < userTeams.length; i++) {
+                let team = await module.exports.findTeamById(userTeams[i].teamId)
+                teams.push(team);
+            }
         }
         return teams;
 
@@ -79,22 +81,28 @@ module.exports = { // event functions ==========================================
 
         let payments = [];
         const userDetail = await module.exports.userDetails(user);
-        const teams = userDetail.teams;
-        // check the hospitality fees is paid or not
 
-        if (userDetail.paymentStatus == 0) {
-            payments.push({ paymentType: "user", amount: Number(process.env.AMOUNT), id: userDetail._id });
-        }
+        if (userDetail) {
+            const teams = userDetail.teams;
+            // check the hospitality fees is paid or not    
 
-        // check the teams fees, for the teams whose team leader is current user
 
-        for (let i = 0; i < teams.length; i++) {
-            let team = await teamTable.findOne({ _id: teams[i].teamId });
-            if (team.teamLeader.toString() == userDetail._id.toString() && team.paymentStatus == 0) {
-                let event = await module.exports.findEventById(teams[i].eventId);
-                payments.push({ paymentType: "team", amount: event.fees, id: team._id });
+
+            if (userDetail.paymentStatus == 0) {
+                payments.push({ paymentType: "user", amount: Number(process.env.AMOUNT), id: userDetail._id });
+            }
+
+            // check the teams fees, for the teams whose team leader is current user
+
+            for (let i = 0; i < teams.length; i++) {
+                let team = await teamTable.findOne({ _id: teams[i].teamId });
+                if (team && team.teamLeader.toString() == userDetail._id.toString() && team.paymentStatus == 0) {
+                    let event = await module.exports.findEventById(teams[i].eventId);
+                    payments.push({ paymentType: "team", amount: event.fees, id: team._id, eventName: event.name });
+                }
             }
         }
+
         return payments;
     },
     // team functions ===================================================================================================================================
@@ -107,33 +115,45 @@ module.exports = { // event functions ==========================================
 
         // check the validation that is the user registered for the event or not
 
-        let checker = (await module.exports.isRegisteredforEvent(req.user, event)) || (await module.exports.checkAtheleticEvents(req.user, event));
+        if (event && userDetail) {
+            let checker = (await module.exports.isRegisteredforEvent(req.user, event)) || (await module.exports.checkAtheleticEvents(req.user, event));
 
-        if (checker) {
-            return false;
-        }
-        // validation is done
-
-        // creating a new entry in team table
-        var newteam = new teamTable({
-            event: event._id,
-            name: TeamName,
-            teamLeader: userDetail._id,
-        });
-
-        newteam.save(function (err) {
-            if (err) {
-                console.log(err.errors);
+            if (checker) {
+                return false;
             }
-        });
 
-        // updating the team id of the leader
-        await userTable.updateOne({ googleId: userDetail.googleId }, { $push: { teams: { teamId: newteam._id, eventId: event._id } } });
+            // check any team with this name is already existing or not
 
-        // add the user to registered user of the event
-        await eventTable.updateOne({ _id: event._id }, { $push: { registeredUsers: { user_id: userDetail._id } } });
+            const existingTeam = await teamTable.findOne({ name: TeamName });
 
-        return true;
+            if (existingTeam) {
+                return false;
+            }
+
+
+            // validation is done
+
+            // creating a new entry in team table
+            var newteam = new teamTable({
+                event: event._id,
+                name: TeamName,
+                teamLeader: userDetail._id,
+            });
+
+            newteam.save(function (err) {
+                if (err) {
+                    console.log(err.errors);
+                }
+            });
+
+            // updating the team id of the leader
+            await userTable.updateOne({ googleId: userDetail.googleId }, { $push: { teams: { teamId: newteam._id, eventId: event._id } } });
+
+            // add the user to registered user of the event
+            await eventTable.updateOne({ _id: event._id }, { $push: { registeredUsers: { user_id: userDetail._id } } });
+
+            return true;
+        }
     },
     findEventById: async function (eventId) {
         const eventTable = require("./models/event");
@@ -150,7 +170,7 @@ module.exports = { // event functions ==========================================
         const eventDetail = await module.exports.findEventById(teamDetail.event);
 
         // validtion of team id
-        if (teamDetail == null || userDetail == null) {
+        if (teamDetail == null || userDetail == null || eventDetail == null) {
             return false;
         }
 
@@ -181,13 +201,80 @@ module.exports = { // event functions ==========================================
         return teamDetail;
     },
     findAllMembersOfTeam: async function (team) {
-        const mems = team.members;
-        const memberDetails = []
-        for (let i = 0; i < mems.length; i++) {
-            let member = await module.exports.findUserById(mems[i].member_id);
-            memberDetails.push(await module.exports.findUserById(mems[i].member_id));
+
+        if (team) {
+            const mems = team.members;
+            const memberDetails = []
+            for (let i = 0; i < mems.length; i++) {
+                let member = await module.exports.findUserById(mems[i].member_id);
+                if (member) {
+                    memberDetails.push(await module.exports.findUserById(mems[i].member_id));
+                }
+            }
+
+            return memberDetails;
         }
 
-        return memberDetails;
     },
+    // delete a member of team
+    deleteTeamMember: async function (teamId, memberId) {
+        const teamTable = require("./models/team");
+        const userTable = require("./models/user")
+
+        const teamDetail = await teamTable.findOne({ _id: teamId });
+        const userDetail = await userTable.findOne({ _id: memberId });
+
+        if (teamDetail && userDetail) {
+            // delete this members team from user table
+
+            for (let i = 0; i < userDetail.teams.length; i++) {
+                if (userDetail.teams[i].teamId == teamId) {
+                    userDetail.teams.splice(i, 1);
+                }
+            }
+
+            await userDetail.save();
+            // remove this user from teamMembers list
+
+            for (let i = 0; i < teamDetail.members.length; i++) {
+                if (teamDetail.members[i].member_id == memberId) {
+                    teamDetail.members.splice(i, 1);
+                }
+            }
+
+            await teamDetail.save();
+        }
+    },
+    deleteTeam: async function (teamId, user) {
+        const teamTable = require("./models/team");
+
+
+        const teamDetail = await teamTable.findOne({ _id: teamId });
+        const userDetail = await module.exports.userDetails(user);
+
+        if (teamDetail && (teamDetail.teamLeader.toString() == userDetail._id.toString())) {
+            if (teamDetail.paymentStatus == 0) {
+                // remove all the members from team
+                for (let i = 0; i < teamDetail.members.length; i++) {
+                    await module.exports.deleteTeamMember(teamId, teamDetail.members[i].member_id);
+                }
+
+                // remove the leader from the team
+
+                for (let i = 0; i < userDetail.teams.length; i++) {
+                    if (userDetail.teams[i].teamId == teamId) {
+                        userDetail.teams.splice(i, 1);
+                    }
+                }
+
+                await userDetail.save();
+
+                // delete the team from team database
+
+                await teamTable.deleteOne({ _id: teamId });
+            }
+        }
+        else
+            console.log("NOT found");
+    }
 };

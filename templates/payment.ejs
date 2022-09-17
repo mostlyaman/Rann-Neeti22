@@ -113,15 +113,19 @@
                         <form action="/payment/order" id="paymentForm" method="post">
                             <div class="row ">
                                 <div class="col-6">
-                                    <h3>Cricket</h3>
-                                    <img class="left-img"
-                                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSi0EqhjkkSPH_uH3PpFfjL9spyirBUNtaUw&usqp=CAU"
-                                        alt="">
+                                    <% if(payments[i].paymentType=="user" ) {%>
+                                        <h3>Registration Fees</h3>
+                                        <%} else {%>
+                                            <%= payments[i].eventName%>
+                                                <%}%>
+                                                    <img class="left-img"
+                                                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSi0EqhjkkSPH_uH3PpFfjL9spyirBUNtaUw&usqp=CAU"
+                                                        alt="">
                                 </div>
                                 <div class="col-4 btn-col-left"
                                     style="display:flex;  flex-direction: column; justify-content:center;align-items:center;">
                                     <div class="row" style="display:block ;">
-                                        <p>Pending Fees : <%= payments[i].amount%>
+                                        <p>Fees : <%= payments[i].amount%>
                                         </p>
                                     </div>
                                     <button class="btn btn-dark">Pay</button>
@@ -141,15 +145,19 @@
                             <form action="/payment/order" id="paymentForm" method="post">
                                 <div class="row ">
                                     <div class="col-6">
-                                        <h3>Cricket</h3>
-                                        <img class="left-img"
-                                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSi0EqhjkkSPH_uH3PpFfjL9spyirBUNtaUw&usqp=CAU"
-                                            alt="">
+                                        <% if(payments[i+1].paymentType=="user" ) {%>
+                                            <h3>Registration Fees</h3>
+                                            <%} else {%>
+                                                <%= payments[i+1].eventName%>
+                                                    <%}%>
+                                                        <img class="left-img"
+                                                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSi0EqhjkkSPH_uH3PpFfjL9spyirBUNtaUw&usqp=CAU"
+                                                            alt="">
                                     </div>
                                     <div class="col-4 btn-col-left"
                                         style="display:flex;  flex-direction: column; justify-content:center;align-items:center;">
                                         <div class="row" style="display:block ;">
-                                            <p>Pending Fees : <%= payments[i].amount%>
+                                            <p>Fees : <%= payments[i+1].amount%>
                                             </p>
                                         </div>
                                         <button class="btn btn-dark">Pay</button>
@@ -157,8 +165,8 @@
                                 </div>
 
                                 <input name="paymentType" type="hidden" id="paymentType"
-                                    value="<%=payments[i].paymentType%>" readonly>
-                                <input name="id" id="id" type="hidden" value="<%= payments[i].id %>" readonly>
+                                    value="<%=payments[i+1].paymentType%>" readonly>
+                                <input name="id" id="id" type="hidden" value="<%= payments[i+1].id %>" readonly>
 
                             </form>
 

@@ -15,5 +15,8 @@ router.get("/profile", [authCheck, liveCheck], async (req, res) => {
     res.render("profile", context);
 })
 
+router.get("/ourteam", async (req, res) => {
+    res.render('ourteam.ejs');
+})
 
 module.exports = router
