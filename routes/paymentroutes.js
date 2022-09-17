@@ -140,13 +140,13 @@ router.post("/verify", [authCheck, liveCheck], async function (req, res, next) {
                     throw err;
                 }
                 // Render payment success page, if saved succeffully
+                req.flash("message", "Payment successfull");
                 res.redirect("/");
             }
         );
     } else {
-        res.render("payment/fail", {
-            title: "Payment verification failed",
-        });
+        req.flash("message", "Sorry, unable to make payment");
+        res.redirect("/");
     }
 });
 

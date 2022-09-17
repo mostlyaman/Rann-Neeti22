@@ -154,6 +154,7 @@ module.exports = { // event functions ==========================================
 
             return true;
         }
+        return false;
     },
     findEventById: async function (eventId) {
         const eventTable = require("./models/event");
@@ -185,13 +186,14 @@ module.exports = { // event functions ==========================================
         let maxTeamsize = eventDetail.teamSize;
         let currentTeamSize = teamDetail.members.length;
 
-        if (maxTeamsize > currentTeamSize) {
+        if (maxTeamsize > currentTeamSize + 1) {
             await userTable.updateOne({ googleId: userDetail.googleId }, { $push: { teams: { teamId: teamId, eventId: eventDetail._id } } });
             await eventTable.updateOne({ _id: teamDetail.event }, { $push: { registeredUsers: { user_id: userDetail._id } } });
             await teamTable.updateOne({ _id: teamId }, { $push: { members: { member_id: userDetail._id } } });
             return true;
         }
         else {
+            console.log("Team full");
             return false;
         }
     },
@@ -217,14 +219,15 @@ module.exports = { // event functions ==========================================
 
     },
     // delete a member of team
-    deleteTeamMember: async function (teamId, memberId) {
+    deleteTeamMember: async function (teamId, memberId, user) {
         const teamTable = require("./models/team");
-        const userTable = require("./models/user")
+        const userTable = require("./models/user");
 
         const teamDetail = await teamTable.findOne({ _id: teamId });
         const userDetail = await userTable.findOne({ _id: memberId });
+        const currentUser = await module.exports.userDetails(user);
 
-        if (teamDetail && userDetail) {
+        if (teamDetail && userDetail && (teamDetail.teamLeader.toString() == currentUser._id.toString())) {
             // delete this members team from user table
 
             for (let i = 0; i < userDetail.teams.length; i++) {
@@ -243,7 +246,11 @@ module.exports = { // event functions ==========================================
             }
 
             await teamDetail.save();
+
+            return true;
         }
+
+        return false;
     },
     deleteTeam: async function (teamId, user) {
         const teamTable = require("./models/team");
@@ -272,9 +279,13 @@ module.exports = { // event functions ==========================================
                 // delete the team from team database
 
                 await teamTable.deleteOne({ _id: teamId });
+
+                return true;
             }
+
+            return false;
         }
         else
-            console.log("NOT found");
+            return false;
     }
 };

@@ -15,7 +15,7 @@ const passport = require("passport")
 const bodyParser = require("body-parser")
 const connectDB = require("./config/db");
 const MongoStore = require("connect-mongo");
-
+const flash = require("connect-flash");
 // Load config
 require("dotenv").config({ path: "./config/config.env" });
 
@@ -45,7 +45,6 @@ app.use(
         extended: true,
     })
 );
-
 // set template view engine
 app.set("views", "./templates");
 app.set("view engine", "ejs");
@@ -71,6 +70,8 @@ app.use(function (req, res, next) {
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use(flash());
+
 // Routes
 app.use("/auth", authRoutes);
 app.use("/events", eventRoutes);
@@ -79,7 +80,8 @@ app.use("/", teamRoutes);
 app.use("/payment", paymentRoutes);
 
 app.get("/", async (req, res) => {
-    res.render("index", { authenticated: req.isAuthenticated() });
+    const message = req.flash("message");
+    res.render("index", { authenticated: req.isAuthenticated(), message: message });
 })
 
 
