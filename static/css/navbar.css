@@ -1,0 +1,51 @@
+ @media screen and (max-width:1150px) {
+    .site-logo {
+      position: unset !important;
+    }
+
+    h3 {
+      font-size: 23px !important;
+    }
+  }
+
+  * {
+    scroll-behavior: smooth;
+    padding: 0px;
+    margin: 0px;
+    color: white;
+  }
+
+  .contactbox span {
+    margin: 3px;
+  }
+
+  #register {
+
+    width: 42%;
+    border-radius: 30px;
+    font-size: 13.5px;
+  }
+
+  #hamburger {
+    position: absolute;
+
+  }
+
+  #cont {
+    position: absolute;
+    right: 10px;
+  }
+
+  .site-navbar{
+    position: absolute;
+  }
+
+  .sze {
+    letter-spacing: unset !important;
+    padding: 0px 9px !important;
+    color: #fff;
+    font-size: 16px;
+    display: inline-block;
+    text-decoration: none !important;
+    text-transform: unset !important
+  }
