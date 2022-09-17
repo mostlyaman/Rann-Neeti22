@@ -4,6 +4,13 @@ const { authCheck, liveCheck } = require("../middleware/auth");
 
 const router = require("express").Router();
 
+router.get("/ourteam", async (req, res) => {
+    context = {
+        authenticated: req.isAuthenticated()
+    }
+    res.render('ourteam.ejs', context);
+})
+
 router.get("/team", [authCheck, liveCheck], async (req, res) => {
     const teamId = req.query.teamId;
     const teamDetail = await findTeamById(teamId);
@@ -20,7 +27,8 @@ router.get("/team", [authCheck, liveCheck], async (req, res) => {
         team: teamDetail,
         teamMembers: members,
         leader: teamLeader,
-        user: req.user
+        user: req.user,
+        authenticated: req.isAuthenticated()
     }
     res.render("teampage", context);
 })

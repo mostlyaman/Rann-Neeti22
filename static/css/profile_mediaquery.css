@@ -1,0 +1,47 @@
+
+@media only screen and (max-width:1000px){
+    .profilecard{
+        width: 50% !important;
+    }
+    .container{
+        max-width: 100% !important;
+    }
+
+}   
+@media only screen and (max-width:700px){
+    .profilecard{
+        width: 70% !important;
+    }
+
+} 
+
+
+@media only screen and (max-width:550px){
+    .heading{
+        font-size: 28px !important;
+    }
+
+    .register{
+        margin-left: 68px !important;
+    }
+
+
+} 
+@media only screen and (max-width:400px){
+
+    .register{
+        margin-left: 35px !important;
+    }
+
+
+} 
+
+@media only screen and (max-width:500px){
+   .profilecard{
+    width: 80% !important;
+   }
+
+   .leader span{
+    font-size: 17px !important;
+   }
+} 

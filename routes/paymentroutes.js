@@ -27,7 +27,11 @@ let razorPayInstance = new Razorpay({
  */
 router.get("/", [authCheck, liveCheck], async function (req, res, next) {
     const payments = await findAllPendingPayments(req.user);
-    res.render("payment", { payments });
+    const context = {
+        authenticated: req.isAuthenticated(),
+        payments: payments
+    }
+    res.render("payment", context);
 });
 
 /**
