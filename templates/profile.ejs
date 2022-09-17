@@ -5,9 +5,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile</title>
+    <title>Team
+    </title>
 
-    <link rel="stylesheet" href="fonts/icomoon/style.css">
+    <link rel="stylesheet" href="/fonts/icomoon/style.css">
 
     <link rel="stylesheet" href="/css/bootstrap/bootstrap.css">
     <link rel="stylesheet" href="/css/jquery-ui.css">
@@ -18,153 +19,198 @@
     <link rel="stylesheet" href="/css/jquery.fancybox.min.css">
 
     <link rel="stylesheet" href="/css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="/css/navbar.css">
-    <link rel="stylesheet" href="/fonts/flaticon/font/flaticon.css">
+
+    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
 
     <link rel="stylesheet" href="/css/aos.css">
 
     <link rel="stylesheet" href="/css/style.css">
-    
-    <link rel="stylesheet" href="/css/profile_mediaquery.css">
 
-    <Style>
-        * {
-            color: white;
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/teampage_mediaquery.css">
+
+    <style>
+        .head span {
+            font-size: 50px;
+            line-height: 58px;
+            margin: 0px -5px;
+
+            text-shadow: 4px 3px 11px red;
         }
 
-        .profilecard {
-            position: relative;
+        .head {
+            padding-top: 100px;
+            display: flex;
+            align-items: baseline;
+            transform: skewy(-3.5deg);
+            color: rgb(255, 255, 255);
+            font-weight: bold;
+            font-size: 20px;
+            display: flex;
+            width: 100%;
+            justify-content: center;
+        }
+
+
+
+        .cont {
+            padding-top: 5rem;
+            width: 100%;
+            height: 249px;
+            color: white;
+            transform: skewy(3.5deg) translatey(-15px);
+            padding-top: 2.5rem;
+        }
+
+        .teaminfo {
+            padding: 12px;
+            display: flex;
+            width: 60%;
+            margin: auto;
+            flex-direction: column;
+            justify-content: center;
+            height: 300px;
+            text-align: center;
+            border: 2px solid white;
+            border-radius: 29px;
+            box-shadow: 3px 3px red;
+            backdrop-filter: blur(10px) saturate(200%);
+            align-items: center;
+
+        }
+
+        .teaminfo span {
+            display: flex;
+            margin: 3px;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            height: 20%;
+
+        }
+
+        .teaminfo div span {
+            margin: 10px;
+        }
+
+        .span {
+            font-size: 25px;
+            font-weight: bold;
+            margin-bottom: 50px;
+        }
+
+        .contain::-webkit-scrollbar {
+            display: none;
+        }
+
+        .player {
+            margin: 10px;
+            width: auto;
+            min-height: 56px;
             display: flex;
             flex-direction: column;
-            border: 2px solid white;
-            width: 40%;
-            margin: auto;
-            top: 110px;
-            height: auto;
-            align-items: center;
-            border-radius: 30px;
-            backdrop-filter: blur(10px) saturate(200%);
-            box-shadow: 1px 2px 30px 10px #ff00007d;
+            align-items: flex-start;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
         }
 
-        div span {
-            font-size: 20px;
-            color: white
+        #conti {
+            width: 60%;
+            background-color: #00000047;
         }
 
-        .pop{
-                display: flex;
-    flex-wrap: wrap;
-    /* justify-content: center; */
-    margin: 0px 35px;
-    font-size: 21px;
+        @media only screen and (max-width:900px) {
+            .vl {
+                display: none;
+            }
+
+            .team {
+                margin-top: 60px;
+            }
+
         }
-
-
-        header{
-            background-color: black;
-        }
-    </Style>
-
+    </style>
+    <link rel="stylesheet" href="/css/teampage_mediaquery.css">
 
 </head>
 
 <body>
-    
-    <div class="site-wrap "style="background: url('/images/createteambg.jpeg') no-repeat center center/cover; height:auto; min-height: 100vh;">
 
-        <div>
-            <%- include('partials/navbar.ejs') %>
-        </div>
-
-        <div class="container">
-            
-            <div class="profilecard">
-                <h1 style="margin:10px auto">Profile</h1>
-                <hr>
-                <div id="info" style="    display: flex;
-                flex-direction: column;
-                text-align:center;
-                width: 90%; align-items: center;">
-                    <img style="max-height: 100px;
-                    width: 100px;
-                    vertical-align: middle;
-                    border-style: none;
-                    border-radius: 60px;" src="<%= user.image %>" alt="to be shown">
-                    <br>
-                    <div class="leader" style="font-size:20px; color:white;">
-                        <span id="name">
-                            <%= user.firstName %>
-                        </span>
-                        <br>
-                        <span id="email">
-                            <%= user.email %>
-                        </span>
-                    </div>
-                </div>
-                <hr>
-                <div  style="width: 100%;
-                display: flex;
-                margin: 15px;
-                flex-direction: column;
-                align-items: center;
-                height: auto;">
-                    <button style="margin: 10px 10px; width: 35%;
-    padding: 7px;
-    border-radius: 30px;" class="btn btn-primary" onclick="window.location='/';">Home</button>
-                    <button style="margin: 0px 10px; width: 35%;
-    padding: 7px;
-    border-radius: 30px;" class="btn btn-primary" onclick="window.location='/auth/logout';">Logout</button>
-                </div>
-            </div>
-
-            <div class="register" style="    margin-top: 150px;
-            margin-left: 100px;">
-                <div id="register" >
-                    <div class="title-section">
-                        <h2 style="font-size:35px ;" class="heading">Events Registered</h2>
-                    </div>
-
-                    <div class="pop">
-                        <%if(teams.length===0) {%>
-                            <p>No events registered yet</p>
-                            <% } else {%>
-    
-                                <%for(let i=0;i < teams.length;i++){ %>
-                                    <p style="margin-bottom: 0px;">
-                                        <a style="color: white;" href="/team?teamId=<%=teams[i]._id%>">
-                                            <%= teams[i].name %>
-                                        </a>
-                                    </p>
-                                    <%} }%>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
+    <div style="background-color:black ;">
+        <%- include('partials/navbar.ejs') %>
     </div>
+    <div class="site-wrap"
+        style="min-height: 63vh;height: auto;background: url('https://media.istockphoto.com/photos/abstract-red-and-black-are-light-pattern-with-the-gradient-is-the-picture-id1286371622?k=20&m=1286371622&s=612x612&w=0&h=Th-llkNsxoaQPtmBDn6-FE-CAwFA9oY_elP_qKJ1yFs=') no-repeat center center/cover;">
+        <div class="site-mobile-menu site-navbar-target">
+            <div class="site-mobile-menu-header">
+                <div class="site-mobile-menu-close">
+                    <span class="icon-close2 js-menu-toggle"></span>
+                </div>
+            </div>
+            <div class="site-mobile-menu-body"></div>
+        </div>
+
+        <div class="cont">
+            <div class="head">
+                <span>
+                    Profile
+                </span>
+            </div>
+        </div>
+        <div id="page"
+            style="display: flex;width: 94%; min-height: 67vh; height: auto;margin: auto;align-items:  center">
+
+            <div id="conti">
+                <div class="teaminfo">
+                    <span class="span"><img src="" alt="To be Shown"></span>
+                    <div>
+                        <span>
+                            lakshay
+                        </span>
+                        <span>
+                            b21303@students.iitmandi.ac.in
+                        </span>
+                        <button class="btn btn-primary">Logout</button>
+                    </div>
+                </div>
+            </div>
+            <div class="vl" style="width:1px ; height:50vh ; background-color: rgba(255, 255, 255, 0.463);"></div>
+            <div class="team" style="width: 50%; ">
+                <div class="contain" style="height: 400px;overflow-y: scroll;width: 60%;margin: auto;">
+                    <div class="title-section">
+                        <h2 class="heading">Teams Joined</h2>
+                    </div>
+                    <div class="player">
+                        <span style="display: flex; align-items:center">
+                            Cricket
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
 
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <script src="js/jquery-migrate-3.0.1.min.js"></script>
+        <script src="js/jquery-ui.js"></script>
+        <script src="js/popper.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/owl.carousel.min.js"></script>
+        <script src="js/jquery.stellar.min.js"></script>
+        <script src="js/jquery.countdown.min.js"></script>
+        <script src="js/bootstrap-datepicker.min.js"></script>
+        <script src="js/jquery.easing.1.3.js"></script>
+        <script src="js/aos.js"></script>
+        <script src="js/jquery.fancybox.min.js"></script>
+        <script src="js/jquery.sticky.js"></script>
+        <script src="js/jquery.mb.YTPlayer.min.js"></script>
 
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/jquery-migrate-3.0.1.min.js"></script>
-    <script src="js/jquery-ui.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/jquery.stellar.min.js"></script>
-    <script src="js/jquery.countdown.min.js"></script>
-    <script src="js/bootstrap-datepicker.min.js"></script>
-    <script src="js/jquery.easing.1.3.js"></script>
-    <script src="js/aos.js"></script>
-    <script src="js/jquery.fancybox.min.js"></script>
-    <script src="js/jquery.sticky.js"></script>
-    <script src="js/jquery.mb.YTPlayer.min.js"></script>
 
-
-    <script src="js/main.js"></script>
+        <script src="js/main.js"></script>
 </body>
 
 </html>
