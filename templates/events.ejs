@@ -30,7 +30,7 @@
   <link rel="stylesheet" href="/css/style.css">
 
   <link rel="stylesheet" href="/css/event_mediaquery.css">
-
+  <link rel="stylesheet" href="/css/navbar.css">
   <style>
     * {
       font-family: 'Baloo 2', cursive;
@@ -105,17 +105,24 @@
       width: 250px;
       background-color: #000000bf;
     }
+    .sze{
+      font-size: 18px !important;
+    }
+    .site-navbar{
+      position: unset;
+    }
   </style>
 
 </head>
 
 <body>
 
+  <div style="background-color: black;">
+    <%- include('partials/navbar.ejs') %>
+  </div>
 
   <div class="site-wrap">
 
-
-    <%- include('partials/navbar.ejs') %>
 
       <div id="page" style="overflow:hidden;display:  flex;background:url('images/eventbg.png') no-repeat center center/cover">
         <div class="cont">

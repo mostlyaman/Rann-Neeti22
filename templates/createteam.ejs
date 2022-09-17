@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="/css/aos.css">
 
     <link rel="stylesheet" href="/css/style.css">
-
+    <link rel="stylesheet" href="/css/navbar.css">
 
     <style>
         @media only screen and (max-width:500px) {
@@ -39,6 +39,10 @@
                 font-size: 10px;
             }
         }
+
+        .site-navbar{
+            position: unset !important;
+        }
     </style>
 
 </head>
@@ -48,7 +52,9 @@
     <div class="site-wrap"
         style="background: url('/images/createteambg.jpeg') no-repeat center center/cover; height:auto; min-height: 100vh;">
 
-        <%- include('partials/navbar.ejs') %>
+        <div  style="background-color: black;">
+            <%- include('partials/navbar.ejs') %>
+        </div>
 
         <div class="">
             <div class="container">

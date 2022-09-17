@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="/css/owl.carousel.min.css">
   <link rel="stylesheet" href="/css/owl.theme.default.min.css">
   <link rel="stylesheet" href="/css/owl.theme.default.min.css">
-
+  <link rel="stylesheet" href="/css/navbar.css">
   <link rel="stylesheet" href="/css/jquery.fancybox.min.css">
 
   <link rel="stylesheet" href="/css/bootstrap-datepicker.css">
@@ -53,6 +53,17 @@
     font-size: 1.05rem;
     text-align: center;
     display: block;
+  }
+
+  .site-navbar{
+    position: unset;
+  }
+  .site-section{
+    padding: 0px !important;
+  }
+
+  .container{
+    margin: 100px auto;
   }
 </style>
 
@@ -136,7 +147,9 @@
 </div> -->
 
   <div class="site-section">
-    <%- include('partials/navbar.ejs') %>
+    <div style="background-color: black;">
+      <%- include('partials/navbar.ejs') %>
+    </div>
     <div class="container">
       <div class="row">
         <div class="col-6 title-section">
@@ -150,7 +163,6 @@
           </div>
         </div>
       </div>
-
 
       <div class="owl-4-slider owl-carousel">
         <div class="item">

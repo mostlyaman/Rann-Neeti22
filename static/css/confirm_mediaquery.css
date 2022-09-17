@@ -1,6 +1,6 @@
 
 @media only screen and (max-width:690px){
-    #cont{
+    #conti{
         width: 55% !important; 
     }
     .btn{
@@ -8,7 +8,7 @@
     }
 }
 @media only screen and (max-width:450px){
-    #cont{
+    #conti{
         width: 83% !important; 
     }
 }

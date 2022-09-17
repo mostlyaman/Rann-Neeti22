@@ -415,7 +415,7 @@ h5,
   margin-bottom: 0px;
   /* background-color: red; */
   z-index: 1999;
-  position: absolute;
+  /* position: absolute; */
   width: 100%;
 }
 
@@ -459,8 +459,7 @@ h5,
 .site-navbar .site-navigation .site-menu>li>a {
   padding: 0px 13px;
   color: #fff;
-  font-size: 13.5px;
-  letter-spacing: 0.1rem;
+    letter-spacing: 0.1rem;
   text-transform: uppercase;
   font-weight: 400;
   display: inline-block;

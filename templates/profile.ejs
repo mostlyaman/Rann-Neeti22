@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="/css/jquery.fancybox.min.css">
 
     <link rel="stylesheet" href="/css/bootstrap-datepicker.css">
-
+    <link rel="stylesheet" href="/css/navbar.css">
     <link rel="stylesheet" href="/fonts/flaticon/font/flaticon.css">
 
     <link rel="stylesheet" href="/css/aos.css">
@@ -39,7 +39,7 @@
             border: 2px solid white;
             width: 40%;
             margin: auto;
-            top: 60px;
+            top: 110px;
             height: auto;
             align-items: center;
             border-radius: 30px;
@@ -59,6 +59,11 @@
     margin: 0px 35px;
     font-size: 21px;
         }
+
+
+        header{
+            background-color: black;
+        }
     </Style>
 
 
@@ -67,7 +72,11 @@
 <body>
     
     <div class="site-wrap "style="background: url('/images/createteambg.jpeg') no-repeat center center/cover; height:auto; min-height: 100vh;">
-        <%- include('partials/navbar.ejs') %>
+
+        <div>
+            <%- include('partials/navbar.ejs') %>
+        </div>
+
         <div class="container">
             
             <div class="profilecard">
@@ -83,7 +92,7 @@
                     border-style: none;
                     border-radius: 60px;" src="<%= user.image %>" alt="to be shown">
                     <br>
-                    <div style="font-size:20px; color:white;">
+                    <div class="leader" style="font-size:20px; color:white;">
                         <span id="name">
                             <%= user.firstName %>
                         </span>
@@ -111,7 +120,7 @@
 
             <div class="register" style="    margin-top: 150px;
             margin-left: 100px;">
-                <div id="register" style="    margin: 40px 0px auto auto;">
+                <div id="register" >
                     <div class="title-section">
                         <h2 style="font-size:35px ;" class="heading">Events Registered</h2>
                     </div>
