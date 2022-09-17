@@ -4,13 +4,6 @@ const { authCheck, liveCheck } = require("../middleware/auth");
 
 const router = require("express").Router();
 
-router.get("/ourteam", async (req, res) => {
-    context = {
-        authenticated: req.isAuthenticated()
-    }
-    res.render('ourteam.ejs', context);
-})
-
 router.get("/team", [authCheck, liveCheck], async (req, res) => {
     const teamId = req.query.teamId;
     const teamDetail = await findTeamById(teamId);
@@ -37,13 +30,23 @@ router.post("/team/deleteMember", [authCheck, liveCheck], async (req, res) => {
     const teamId = req.body.teamId;
     const memberId = req.body.memberId;
 
-    await deleteTeamMember(teamId, memberId);
+    let checker = await deleteTeamMember(teamId, memberId, req.user);
+
+    if (checker)
+        req.flash("message", "Member removed successfully");
+    else
+        req.flash("message", "Sorry, something went wrong");
     res.redirect("/profile");
 })
 
 router.post("/team/deleteTeam", [authCheck, liveCheck], async (req, res) => {
     const teamId = req.body.teamId;
-    await deleteTeam(teamId, req.user);
+    let checker = await deleteTeam(teamId, req.user);
+
+    if (checker)
+        req.flash("message", "Team deleted successfully");
+    else
+        req.flash("message", "Sorry, something went wrong");
     res.redirect("/profile");
 })
 module.exports = router

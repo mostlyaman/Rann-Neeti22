@@ -8,7 +8,7 @@
     <title>Team | <%= team.name %>
     </title>
 
-    <link rel="stylesheet" href="/fonts/icomoon/style.css">
+    <!-- <link rel="stylesheet" href="/fonts/icomoon/style.css"> -->
 
     <link rel="stylesheet" href="/css/bootstrap/bootstrap.css">
     <link rel="stylesheet" href="/css/jquery-ui.css">
@@ -26,7 +26,7 @@
 
     <link rel="stylesheet" href="/css/style.css">
 
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
     <link rel="stylesheet" href="/css/navbar.css">
     <link rel="stylesheet" href="/css/teampage_mediaquery.css">
 
@@ -152,7 +152,8 @@
                 </span>
             </div>
         </div>
-        <div id="page" style="display: flex;width: 94%; min-height: 67vh; height: auto;margin: auto;align-items:  center;box-shadow: 1px 1px 50px -10px red;">
+        <div id="page"
+            style="display: flex;width: 94%; min-height: 67vh; height: auto;margin: auto;align-items:  center;box-shadow: 1px 1px 50px -10px red;">
 
             <div id="conti">
                 <div class="teaminfo">
@@ -166,6 +167,11 @@
                             <%= team._id %>
                         </span>
                         <span>1243644533</span>
+
+                        <form action="/team/deleteTeam" method="post">
+                            <input type="hidden" value="<%= team._id %>" name="teamId">
+                            <button>Delete Team</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -176,14 +182,20 @@
                             <span style="display: flex; align-items:center">
                                 <%= teamMembers[i].firstName %>
                                     <% if(user._id==leader._id) { %>
-                                        <i style="font-size: 25px;position: absolute;right: 14px;" class="material-icons" style="font-size:36px">close</i>
-                                <% } %>
+
+                                        <form method="post" action="/team/deleteMember">
+                                            <input type="hidden" value="<%=teamMembers[i]._id%>" name="memberId">
+                                            <input type="hidden" value="<%=team._id%>" name="teamId">
+                                            <button type="submit" class="btn-close" aria-label="Close"
+                                                style="position: fixed; margin-right: 7px; color: white;">Remove</button>
+                                        </form>
+                                        <% } %>
                             </span>
                             <Span>
                                 <%= teamMembers[i].email %>
                             </Span>
                         </div>
-                    <% } %>
+                        <% } %>
                 </div>
             </div>
         </div>
