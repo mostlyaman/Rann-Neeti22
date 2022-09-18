@@ -24,30 +24,35 @@
             <li class="active">
               <a href="/" class="nav-link sze">Home</a>
             </li>
-            <li><a href="/#about" class="nav-link sze">About Us</a></li>
-            <li><a href="/events" class="nav-link sze">Events</a></li>
-            <li><a href="/#sponsers" class="nav-link sze">Sponsors</a></li>
-            <li><a href="/#contact" class="nav-link sze">Contact</a></li>
-            <li><a href="/ourteam" class="nav-link sze">Our Team</a></li>
+            <li><a id href="/#about" class="nav-link sze">About Us</a></li>
+            <li><a id href="/events" class="nav-link sze">Events</a></li>
+            <li><a id href="/#sponsers" class="nav-link sze">Sponsors</a></li>
+            <li><a id href="/ourteam" class="nav-link sze">Our Team</a></li>
+            <ul class="site-menu main-menu js-clone-nav mr-auto d-none">
+              <li><a id href="/#contact" class="nav-link sze">Contact</a></li>
+            </ul>
             <% if(!authenticated){ %>
               <li>
                 <a id="sign" href="/auth/google"><i class="nav-link fa-brands fa-google sze"></i> SignIn</a>
               </li>
               <% }else{ %>
-                <li><a id="sign" href="/profile" class="nav-link sze"> Profile</a></li>
-                <li><a href="/payment" class="nav-link sze">Payments</a></li>
+                <ul class="site-menu main-menu js-clone-nav mr-auto d-none">
+                  <li><a id="sign" href="/profile" class="nav-link sze"> Profile</a></li>
+                  <li><a href="/payment" class="nav-link sze">Payments</a></li>
+                </ul>
                 <li>
                   <a id="sign" href="/auth/logout" class="nav-link sze"><i class="fa-brands fa-google"></i> Logout</a>
                 </li>
                 <% } %>
-                  <!-- <button id="hamburger" class="material-symbols-outlined">menu</button> -->
-          </ul>
-        </nav>
-        <!-- changed -->
-        <a href="#"
-          class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black float-right text-white"><span
-            class="icon-menu h3 text-white"></span></a>
-      </div>
+              </ul>
+              
+            </nav>
+            <!-- changed -->
+          </div>
+          <a href="#" style="display: inline-block ; position: absolute;
+          right: 37px;"
+  class=" site-menu-toggle js-menu-toggle text-black float-right text-white"><span
+    class="icon-menu h3 text-white"></span></a>
     </div>
   </div>
 </div>
