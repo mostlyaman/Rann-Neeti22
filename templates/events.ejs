@@ -133,14 +133,14 @@
 
 </head>
 
-<body>
-
+<body onload="load()">
+  <%- include('partials/preloader.ejs') %>
   <div class="events-navbar" style="background-color: black;">
     <%- include('partials/navbar.ejs') %>
   </div>
 
   <div class="site-wrap">
-
+    
 
       <div id="page" style="overflow:hidden;display:  flex;background:url('images/eventbg.png') no-repeat center center/cover">
         <div class="cont ">
