@@ -111,7 +111,7 @@
     <title>Payment Details</title>
 </head>
 
-<body>
+<body onload="load()">
     <!-- <h1>Pending Payments</h1>
     <ul>
         
@@ -120,7 +120,7 @@
     <div style="background-color: black;">
         <%- include('partials/navbar.ejs') %>
     </div>
-
+    <%- include('partials/preloader.ejs') %>
     <div id="pay"
         style="height:100vh;background:url('https://img.freepik.com/premium-vector/luxury-bright-red-lines-modern-sport-background_125759-132.jpg') center center/cover ; background-attachment: fixed; padding: 40px;">
 

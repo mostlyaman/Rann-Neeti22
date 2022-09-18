@@ -67,7 +67,7 @@
   }
 </style>
 
-<body>
+<body onload="load()">
 
   <!-- <div class="site-section">
     <div class="container">
@@ -147,6 +147,7 @@
 </div> -->
 
   <div class="site-section">
+    <%- include('partials/preloader.ejs') %>
     <div style="background-color: black;">
       <%- include('partials/navbar.ejs') %>
     </div>

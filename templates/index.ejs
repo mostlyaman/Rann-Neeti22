@@ -61,11 +61,11 @@
 
 </head>
 
-<body>
+<body onload="load()">
   <%- include('partials/flash.ejs') %>
-
+  
     <div class="site-wrap">
-
+      <%- include('partials/preloader.ejs') %>
       <%- include('partials/navbar.ejs') %>
         <div class="hero overlay"
           style="background-image: url('https://user-images.githubusercontent.com/111749567/189417078-dc3c98bd-cb85-4692-8382-f7b784f85473.jpg');">

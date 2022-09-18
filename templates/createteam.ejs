@@ -47,11 +47,11 @@
 
 </head>
 
-<body>
+<body onload="load()">
 
     <div class="site-wrap"
         style="background: url('/images/createteambg.jpeg') no-repeat center center/cover; height:auto; min-height: 100vh;">
-
+        <%- include('partials/preloader.ejs') %>
         <div  style="background-color: black;">
             <%- include('partials/navbar.ejs') %>
         </div>
