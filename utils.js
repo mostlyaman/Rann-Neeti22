@@ -69,6 +69,8 @@ module.exports = { // event functions ==========================================
         if (userDetail) {
             for (let i = 0; i < userTeams.length; i++) {
                 let team = await module.exports.findTeamById(userTeams[i].teamId)
+                let event = await module.exports.findEventById(team.event);
+                team.eventName = event.name;
                 teams.push(team);
             }
         }

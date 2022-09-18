@@ -50,7 +50,7 @@
             display: flex;
             width: 100%;
             justify-content: center;
-            text-transform:uppercase;
+            text-transform: uppercase;
         }
 
 
@@ -166,29 +166,42 @@
 
             <div id="conti">
                 <div class="teaminfo">
-                    <span class="span"><img src="" alt="To be Shown"></span>
+                    <span class="span"><img src="<%=user.image%>" alt="To be Shown"></span>
                     <div>
                         <span>
-                            lakshay
+                            <%= user.firstName %>
                         </span>
                         <span>
-                            b21303@students.iitmandi.ac.in
+                            <%= user.email %>
                         </span>
-                        <button class="btn btn-primary">Logout</button>
+                        <button class=" btn btn-primary" onclick="window.location='/auth/logout'">Logout</button>
                     </div>
                 </div>
             </div>
-            <div class="vl" style="width:1px ; height:50vh ; background-color: rgba(255, 255, 255, 0.463);"></div>
+            <div class=" vl" style="width:1px ; height:50vh ; background-color: rgba(255, 255, 255, 0.463);">
+            </div>
             <div class="team" style="width: 50%; ">
                 <div class="contain" style="height: 400px;overflow-y: scroll;width: 60%;margin: auto;">
                     <div class="title-section">
                         <h2 class="heading">Teams Joined</h2>
                     </div>
-                    <div class="player">
-                        <span style="display: flex; align-items:center">
-                            Cricket
-                        </span>
-                    </div>
+
+                    <% if(teams.length==0) { %>
+                        <strong> No events registered yet</strong>
+                        <% } else {%>
+                            <% for(let i=0;i<teams.length;i++){ %>
+                                <div class="player">
+                                    <span style="display: flex; align-items:center">
+                                        <%= teams[i].eventName %> : <a target="_blank"
+                                                href="/team?teamId=<%=teams[i]._id%>">
+                                                <%=teams[i].name%>
+                                            </a>
+                                    </span>
+
+
+                                </div>
+                                <% } }%>
+
                 </div>
             </div>
         </div>
