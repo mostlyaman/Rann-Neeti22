@@ -96,7 +96,7 @@ h5,
 }
 
 .btn {
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   font-size: 12px;
   font-weight: 900;
   border-width: 2px;
