@@ -14,6 +14,8 @@
   <link rel="stylesheet" href="/fonts/icomoon/style.css">
 
   <link rel="stylesheet" href="/css/bootstrap/bootstrap.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
   <link rel="stylesheet" href="/css/jquery-ui.css">
   <link rel="stylesheet" href="/css/owl.carousel.min.css">
   <link rel="stylesheet" href="/css/owl.theme.default.min.css">
@@ -107,7 +109,7 @@
       position: unset;
     }
     .overlay{
-      position: absolute;
+      /* position: absolute; */
       left:200px;
     }
     .overlay .container #joinbtn{
@@ -139,10 +141,10 @@
     <%- include('partials/navbar.ejs') %>
   </div>
 
-  <div class="site-wrap">
+  <div class="site-wrap flex">
 
 
-      <div id="page" style="overflow:hidden;display:  flex;background:url('images/eventbg.png') no-repeat center center/cover">
+      <div id="page" class="justify-content-center" style="overflow:hidden;display:  flex;background:url('images/eventbg.png') no-repeat center center/cover">
         <div class="cont ">
           <div class="head">
             <span>&nbsp;E</span>
@@ -154,7 +156,7 @@
           </div>
         </div>
         <div class="overlay" style="  margin-top: 100px;  height: auto;
-      min-height: 100vh;">
+        min-height: 100vh;">
           <div>
             <!-- style="background:url('https://s.yimg.com/uu/api/res/1.2/OF4n1WBaz_xC6.NzeKXoLg--~B/aD00MDY7dz03MjA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/deadline.com/5b4eb11e2188b6e4bea9e9a9c5c7a4e0') no-repeat center center/cover" -->
             <div class="container">
@@ -198,11 +200,12 @@
       </div>
 
 
-
-
-
-
-  </div>
+      
+      
+      
+      
+    </div>
+    <%- include('partials/footer.ejs') %>
 
 
   <!-- Footer import as same for all page -->
