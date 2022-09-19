@@ -20,5 +20,9 @@ router.get("/profile", [authCheck, liveCheck], async (req, res) => {
 router.get("/ourteam", async (req, res) => {
     res.render('ourteam.ejs', { authenticated: req.isAuthenticated() });
 })
+router.get("/table", async (req, res) => {
+    res.render('table.ejs', { authenticated: req.isAuthenticated() });
+})
+
 
 module.exports = router
