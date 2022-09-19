@@ -15,9 +15,9 @@
     }
 }
 @media only screen and (max-width:1200px){
-    .sze{
+    /* .sze{
         font-size: 14px !important;
-      }
+      } */
 }
 @media only screen and (max-width:800px){
     h1{
@@ -27,6 +27,9 @@
         width: 30% !important;
         font-size: 17px !important;
         margin-bottom: 100px;
+    }
+    .cont{
+        display: none !important;
     }
 }
 @media only screen and (max-width:910px){
@@ -69,9 +72,7 @@
 }
 
 @media only screen and (max-width:600px){
-    .cont{
-        display: none !important;
-    }
+
     #page{
         justify-content: center;
     }
