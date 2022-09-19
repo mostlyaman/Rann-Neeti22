@@ -52,11 +52,8 @@ router.post("/createTeam", [authCheck, liveCheck], async (req, res) => {
 
     // validation need to  be added here
     let val = await createTeam(req, event);
-    if (!val) {
-        req.flash("message", "Sorry, unable to create a team with these details");
-    } else {
-        req.flash("message", "Team created successfully");
-    }
+    req.flash("message", val);
+
     res.redirect("/profile");
 })
 
@@ -74,12 +71,7 @@ router.post("/joinTeam", [authCheck, liveCheck], async (req, res) => {
     const { teamId, college, phone } = req.body;
     let checker = await joinTeam(teamId, req);
 
-
-    if (checker)
-        req.flash("message", "Team joined successfully");
-    else
-        req.flash("message", "Sorry, unable to join team");
-
+    req.flash("message", checker);
     res.redirect("/profile");
 })
 

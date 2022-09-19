@@ -63,15 +63,17 @@ module.exports = { // event functions ==========================================
     },
     findUserTeams: async function (user) {
         const userDetail = await module.exports.userDetails(user);
-        const userTeams = userDetail.teams;
-        let teams = [];
 
+        let teams = [];
         if (userDetail) {
+            const userTeams = userDetail.teams;
             for (let i = 0; i < userTeams.length; i++) {
                 let team = await module.exports.findTeamById(userTeams[i].teamId)
-                let event = await module.exports.findEventById(team.event);
-                team.eventName = event.name;
-                teams.push(team);
+                if (team) {
+                    let event = await module.exports.findEventById(team.event);
+                    team.eventName = event.name;
+                    teams.push(team);
+                }
             }
         }
         return teams;
@@ -115,13 +117,19 @@ module.exports = { // event functions ==========================================
         const userDetail = await userTable.findOne({ googleId: req.user.googleId });
         const { TeamName } = req.body;
 
+        // check if the hospitality fees paid or not
+
+        if (userDetail && userDetail.paymentStatus == 0) {
+            return "Sorry, you can't create a team before submitting accomadation charges!";
+        }
+
         // check the validation that is the user registered for the event or not
 
         if (event && userDetail) {
             let checker = (await module.exports.isRegisteredforEvent(req.user, event)) || (await module.exports.checkAtheleticEvents(req.user, event));
 
             if (checker) {
-                return false;
+                return "You can only register for atmost 3 atheletic events or already registered for this event";
             }
 
             // check any team with this name is already existing or not
@@ -129,7 +137,7 @@ module.exports = { // event functions ==========================================
             const existingTeam = await teamTable.findOne({ name: TeamName });
 
             if (existingTeam) {
-                return false;
+                return "Team with team-name already exists!";
             }
 
 
@@ -154,9 +162,9 @@ module.exports = { // event functions ==========================================
             // add the user to registered user of the event
             await eventTable.updateOne({ _id: event._id }, { $push: { registeredUsers: { user_id: userDetail._id } } });
 
-            return true;
+            return "Team created successfully!";
         }
-        return false;
+        return "Sorry, unable to create team at this moment";
     },
     findEventById: async function (eventId) {
         const eventTable = require("./models/event");
@@ -172,16 +180,20 @@ module.exports = { // event functions ==========================================
         const userDetail = await userTable.findOne({ googleId: req.user.googleId });
         const eventDetail = await module.exports.findEventById(teamDetail.event);
 
+        if (userDetail && userDetail.paymentStatus == 0) {
+            return "Sorry, you can't join a team before submitting accomodation charges."
+        }
+
         // validtion of team id
         if (teamDetail == null || userDetail == null || eventDetail == null) {
-            return false;
+            return "Invalid Details";
         }
 
         // validation for already registered user or not
         let checker = (await module.exports.isRegisteredforEvent(req.user, eventDetail)) || (await module.exports.checkAtheleticEvents(req.user, eventDetail));
 
         if (checker) {
-            return false;
+            return "You can only register for atmost 3 atheletic events or already registered for this event!";
         }
 
         // first we have to check this team is full or not
@@ -192,11 +204,10 @@ module.exports = { // event functions ==========================================
             await userTable.updateOne({ googleId: userDetail.googleId }, { $push: { teams: { teamId: teamId, eventId: eventDetail._id } } });
             await eventTable.updateOne({ _id: teamDetail.event }, { $push: { registeredUsers: { user_id: userDetail._id } } });
             await teamTable.updateOne({ _id: teamId }, { $push: { members: { member_id: userDetail._id } } });
-            return true;
+            return "Team joined successfully!"
         }
         else {
-            console.log("Team full");
-            return false;
+            return "Team already full!";
         }
     },
     findTeamById: async function (teamId) {

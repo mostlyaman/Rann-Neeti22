@@ -139,92 +139,95 @@
 </head>
 
 <body onload="load()">
-    <%- include('partials/preloader.ejs') %>
-    <div style="background-color:black ;">
-        <%- include('partials/navbar.ejs') %>
-    </div>
-    <div class="site-wrap"
-        style="min-height: 63vh;height: auto;background: url('https://media.istockphoto.com/photos/abstract-red-and-black-are-light-pattern-with-the-gradient-is-the-picture-id1286371622?k=20&m=1286371622&s=612x612&w=0&h=Th-llkNsxoaQPtmBDn6-FE-CAwFA9oY_elP_qKJ1yFs=') no-repeat center center/cover;">
-        <div class="site-mobile-menu site-navbar-target">
-            <div class="site-mobile-menu-header">
-                <div class="site-mobile-menu-close">
-                    <span class="icon-close2 js-menu-toggle"></span>
+    <%- include('partials/flash.ejs') %>
+        <%- include('partials/preloader.ejs') %>
+
+            <div style="background-color:black ;">
+                <%- include('partials/navbar.ejs') %>
+            </div>
+            <div class="site-wrap"
+                style="min-height: 63vh;height: auto;background: url('https://media.istockphoto.com/photos/abstract-red-and-black-are-light-pattern-with-the-gradient-is-the-picture-id1286371622?k=20&m=1286371622&s=612x612&w=0&h=Th-llkNsxoaQPtmBDn6-FE-CAwFA9oY_elP_qKJ1yFs=') no-repeat center center/cover;">
+                <div class="site-mobile-menu site-navbar-target">
+                    <div class="site-mobile-menu-header">
+                        <div class="site-mobile-menu-close">
+                            <span class="icon-close2 js-menu-toggle"></span>
+                        </div>
+                    </div>
+                    <div class="site-mobile-menu-body"></div>
                 </div>
-            </div>
-            <div class="site-mobile-menu-body"></div>
-        </div>
 
-        <div class="cont">
-            <div class="head">
-                <span>
-                    Profile
-                </span>
-            </div>
-        </div>
-        <div id="page"
-            style="display: flex;width: 94%; min-height: 67vh; height: auto;margin: auto;align-items:  center">
-
-            <div id="conti">
-                <div class="teaminfo">
-                    <span class="span"><img src="<%=user.image%>" alt="To be Shown"></span>
-                    <div>
+                <div class="cont">
+                    <div class="head">
                         <span>
-                            <%= user.firstName %>
+                            Profile
                         </span>
-                        <span>
-                            <%= user.email %>
-                        </span>
-                        <button class=" btn btn-primary" onclick="window.location='/auth/logout'">Logout</button>
                     </div>
                 </div>
-            </div>
-            <div class=" vl" style="width:1px ; height:50vh ; background-color: rgba(255, 255, 255, 0.463);">
-            </div>
-            <div class="team" style="width: 50%; ">
-                <div class="contain" style="height: 400px;overflow-y: scroll;width: 60%;margin: auto;">
-                    <div class="title-section">
-                        <h2 class="heading">Teams Joined</h2>
+                <div id="page"
+                    style="display: flex;width: 94%; min-height: 67vh; height: auto;margin: auto;align-items:  center">
+
+                    <div id="conti">
+                        <div class="teaminfo">
+                            <span class="span"><img src="<%=user.image%>" alt="To be Shown"></span>
+                            <div>
+                                <span>
+                                    <%= user.firstName %>
+                                </span>
+                                <span>
+                                    <%= user.email %>
+                                </span>
+                                <button class=" btn btn-primary"
+                                    onclick="window.location='/auth/logout'">Logout</button>
+                            </div>
+                        </div>
                     </div>
+                    <div class=" vl" style="width:1px ; height:50vh ; background-color: rgba(255, 255, 255, 0.463);">
+                    </div>
+                    <div class="team" style="width: 50%; ">
+                        <div class="contain" style="height: 400px;overflow-y: scroll;width: 60%;margin: auto;">
+                            <div class="title-section">
+                                <h2 class="heading">Teams Joined</h2>
+                            </div>
 
-                    <% if(teams.length==0) { %>
-                        <strong> No events registered yet</strong>
-                        <% } else {%>
-                            <% for(let i=0;i<teams.length;i++){ %>
-                                <div class="player">
-                                    <span style="display: flex; align-items:center">
-                                        <%= teams[i].eventName %> : <a target="_blank"
-                                                href="/team?teamId=<%=teams[i]._id%>">
-                                                <%=teams[i].name%>
-                                            </a>
-                                    </span>
+                            <% if(teams.length==0) { %>
+                                <strong> No events registered yet</strong>
+                                <% } else {%>
+                                    <% for(let i=0;i<teams.length;i++){ %>
+                                        <div class="player">
+                                            <span style="display: flex; align-items:center">
+                                                <%= teams[i].eventName %> : <a target="_blank"
+                                                        href="/team?teamId=<%=teams[i]._id%>">
+                                                        <%=teams[i].name%>
+                                                    </a>
+                                            </span>
 
 
-                                </div>
-                                <% } }%>
+                                        </div>
+                                        <% } }%>
 
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
 
 
 
-        <script src="js/jquery-3.3.1.min.js"></script>
-        <script src="js/jquery-migrate-3.0.1.min.js"></script>
-        <script src="js/jquery-ui.js"></script>
-        <script src="js/popper.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/owl.carousel.min.js"></script>
-        <script src="js/jquery.stellar.min.js"></script>
-        <script src="js/jquery.countdown.min.js"></script>
-        <script src="js/bootstrap-datepicker.min.js"></script>
-        <script src="js/jquery.easing.1.3.js"></script>
-        <script src="js/aos.js"></script>
-        <script src="js/jquery.fancybox.min.js"></script>
-        <script src="js/jquery.sticky.js"></script>
-        <script src="js/jquery.mb.YTPlayer.min.js"></script>
+                <script src="js/jquery-3.3.1.min.js"></script>
+                <script src="js/jquery-migrate-3.0.1.min.js"></script>
+                <script src="js/jquery-ui.js"></script>
+                <script src="js/popper.min.js"></script>
+                <script src="js/bootstrap.min.js"></script>
+                <script src="js/owl.carousel.min.js"></script>
+                <script src="js/jquery.stellar.min.js"></script>
+                <script src="js/jquery.countdown.min.js"></script>
+                <script src="js/bootstrap-datepicker.min.js"></script>
+                <script src="js/jquery.easing.1.3.js"></script>
+                <script src="js/aos.js"></script>
+                <script src="js/jquery.fancybox.min.js"></script>
+                <script src="js/jquery.sticky.js"></script>
+                <script src="js/jquery.mb.YTPlayer.min.js"></script>
 
 
-        <script src="js/main.js"></script>
+                <script src="js/main.js"></script>
 </body>
 
 </html>
