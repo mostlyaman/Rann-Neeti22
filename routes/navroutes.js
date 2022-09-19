@@ -27,5 +27,9 @@ router.get("/ourteam", async (req, res) => {
     console.log(heads)
     res.render('ourteam.ejs', context);
 })
+router.get("/table", async (req, res) => {
+    res.render('table.ejs', { authenticated: req.isAuthenticated() });
+})
+
 
 module.exports = router
