@@ -300,5 +300,15 @@ module.exports = { // event functions ==========================================
         }
         else
             return false;
+    },
+    // heads
+    findAllHeads: async function () {
+        const headTable = require("./models/heads")
+        const heads = await headTable.find({}).lean();
+
+        heads.sort(function (a, b) {
+            return a.order > b.order ? 1 : -1;
+        });
+        return heads;
     }
 };

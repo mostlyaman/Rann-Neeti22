@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Team | Rann-Neeti</title>
   <link rel="stylesheet" href="fonts/icomoon/style.css">
 
   <link rel="stylesheet" href="/css/bootstrap/bootstrap.css">
@@ -36,42 +36,15 @@
     padding: 0px !important;
   }
 
-  /*
-
-  @media only screen and (max-width:991px){
-    .rowed{
-      width: 31% !important;
-    }
-
-    h1{
-      font-size: 60px !important;
-    }
-  }
-  @media only screen and (max-width:600px){
-    .rowed{
-      width: 38% !important;
-    }
-    h1{
-      font-size: 50px !important;
-    }
-  }
-  @media only screen and (max-width:400px){
-    .rowed{
-      width: 50% !important;
-    }
-
-    h1{
-      font-size: 45px !important;
-    }
-  } */
-
-  body {
-    /* line-height: unset !important; */
-  }
-
   .site-section {
     width: 100%;
 
+  }
+
+  .img-fluid {
+    width: 100% !important;
+    height: 100% !important;
+    background-size: cover !important;
   }
 </style>
 
@@ -86,26 +59,45 @@
     margin: 70px 0px 0px 0px;text-align: center">Our Team</h1>
       <div class="container" style="    margin: 35px auto;">
         <div class="row">
-          <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-            <div class="our-team">
-              <div class="picture">
-                <img class="img-fluid" src="https://picsum.photos/130/130?image=1027">
+          <% for(let i=0; i< heads.length;i++) {%>
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+              <div class="our-team">
+                <div class="picture">
+                  <img class="img-fluid" src="<%=heads[i].image_link%>">
+                </div>
+                <div class="team-content">
+                  <h3 class="name">
+                    <%=heads[i].name%>
+                  </h3>
+                  <h4 class="title">
+                    <%= heads[i].title%>
+                  </h4>
+                  <h4 class="title">
+                    <%= heads[i].phone%>
+                  </h4>
+                </div>
+                <ul class="social">
+                  <% if(heads[i].twitter !="" ) { %>
+                    <li><a href="<%=heads[i].instagram%>" target="_blank" class="fa-brands fa-instagram"
+                        aria-hidden="true"></a></li>
+                    <%}%>
+
+                      <% if(heads[i].twitter !="" ) { %>
+                        <li><a href="<%=heads[i].twitter%>" target="_blank" class="fa-brands fa-twitter"
+                            aria-hidden="true"></a>
+                        </li>
+                        <%}%>
+
+                          <% if(heads[i].linkedin !="" ) { %>
+                            <li><a href="<%=heads[i].linkedin%>" target="_blank" class="fa-brands fa-linkedin"
+                                aria-hidden="true"></a></li>
+
+                            <%}%>
+                </ul>
               </div>
-              <div class="team-content">
-                <h3 class="name">Michele Miller</h3>
-                <h4 class="title">Web Developer</h4>
-                <h4 class="title">9864578234</h4>
-              </div>
-              <ul class="social">
-                <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa-brands fa-instagram"
-                    aria-hidden="true"></a></li>
-                <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa-brands fa-twitter" aria-hidden="true"></a>
-                </li>
-                <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa-brands fa-linkedin"
-                    aria-hidden="true"></a></li>
-              </ul>
             </div>
-          </div>
+
+            <%}%>
 
 
         </div>
