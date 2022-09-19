@@ -14,11 +14,6 @@
         min-height: 270px !important;
     }
 }
-@media only screen and (max-width:1200px){
-    /* .sze{
-        font-size: 14px !important;
-      } */
-}
 @media only screen and (max-width:800px){
     h1{
         font-size: 2.5rem !important;
@@ -33,10 +28,6 @@
     }
 }
 @media only screen and (max-width:910px){
-    .gamecard{
-        width: 70% !important;
-    margin: 70px 33px !important; 
-    }
 
     .join{
         width: 24% !important;
@@ -58,27 +49,95 @@
         /* width: 30% !important; */
         font-size: 15px !important;
         margin-bottom: 100px;
-    }
-    .gamecard{
-        width: 88% !important;
-    margin: 70px -11px !important;
-}}
-@media only screen and (max-width:768px){
     
+}}
+
+
+
+
+
+
+
+
+
+
+@media only screen and (max-width:1100px){
+    h1{
+        font-size: 3rem !important;
+    }
+
+    .join{
+        width:20% !important;
+        /* font-size: 18px !important; */
+    }
+
+}
+@media only screen and (max-width:1000px){
+    .image {
+        min-height: 270px !important;
+    }
+}
+@media only screen and (max-width:1200px){
+    /* .sze{
+        font-size: 14px !important;
+      } */
+}
+@media only screen and (max-width:800px){
+    h1{
+        font-size: 2.5rem !important;
+    }
+    .join{
+        width: 30% !important;
+        font-size: 17px !important;
+        margin-bottom: 100px;
+    }
     .gamecard{
-        width: 88% !important;
-    margin: 70px -11px !important;
-}        
-}
-
-@media only screen and (max-width:600px){
-
-    #page{
-        justify-content: center;
+        width: 60% !important;
     }
-
-    .overlay{
-        left: 0%;
-
+    .cont{
+        display: none !important;
     }
 }
+@media only screen and (max-width:910px){
+    .gamecard{
+        width: 70% !important;
+    margin: 70px 4px !important; 
+    }
+    .cont{
+        transform: skewX(+3deg) !important;
+    }
+
+    .join{
+        width: 24% !important;
+        font-size: 15px !important;
+    }
+    #joinbtn{
+        font-size: 15px !important;
+    }
+
+    .site{
+        position: absolute;
+        /* right: 12px; */
+    }
+}
+
+
+@media screen and (min-width:910px) and (max-width:1150px) {
+    .gamecard{
+      width: 42% !important;
+    }
+  }
+  @media screen and (max-width:1100px) {
+    .overlay .container #joinbtn{
+      width: 60%;
+    }}
+
+    @media screen and (max-width:450px){
+        .gamecard {
+            width: 85% !important;
+            margin: 70px -43px !important;
+        }
+        .conti{
+            margin: 0px !important;
+        }
+    }
