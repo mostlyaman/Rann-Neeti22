@@ -12,9 +12,6 @@ module.exports = {
         }
     },
     liveCheck: function (req, res, next) {
-        if (process.env.NODE_ENV == "production")
-            res.redirect("/");
-        else
-            return next();
+        return next();
     }
 }
