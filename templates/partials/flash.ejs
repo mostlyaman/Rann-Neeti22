@@ -1,4 +1,15 @@
-<div id="message">
+<style>
+    .alert-warning {
+    color: #ffffff;
+    background-color: #0a0a0a;
+    z-index: 199999;
+    border-color:black ;
+}
+.alert{
+    margin-bottom: 0px;
+}
+</style>
+<div id="message" style="background-color: black; color: red;">
     <% if(message !='' ){ %>
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
             <%= message %>
