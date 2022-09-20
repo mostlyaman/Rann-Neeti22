@@ -24,7 +24,6 @@ router.get("/ourteam", async (req, res) => {
         heads: heads
     }
 
-    console.log(heads)
     res.render('ourteam.ejs', context);
 })
 router.get("/table", async (req, res) => {

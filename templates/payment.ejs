@@ -11,7 +11,9 @@
     <link rel="stylesheet" href="fonts/icomoon/style.css">
 
     <link rel="stylesheet" href="/css/bootstrap/bootstrap.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/css/jquery-ui.css">
     <link rel="stylesheet" href="/css/owl.carousel.min.css">
     <link rel="stylesheet" href="/css/owl.theme.default.min.css">
@@ -122,23 +124,23 @@
         <%- include('partials/navbar.ejs') %>
     </div>
     <%- include('partials/preloader.ejs') %>
-    <div id="pay"
-        style="height:100vh;background:url('https://img.freepik.com/premium-vector/luxury-bright-red-lines-modern-sport-background_125759-132.jpg') center center/cover ; background-attachment: fixed; padding: 40px;">
+        <div id="pay"
+            style="height:100vh;background:url('https://img.freepik.com/premium-vector/luxury-bright-red-lines-modern-sport-background_125759-132.jpg') center center/cover ; background-attachment: fixed; padding: 40px;">
 
-        <div class="title-section">
-            <h2 class="heading">Pending Payments</h2>
-          </div>
+            <div class="title-section">
+                <h2 class="heading">Pending Payments</h2>
+            </div>
 
-        <% for(let i=0;i<payments.length;i+=2) { %>
-            <div class="container-box payment-con">
-                <div class="row" id="pay-row">
-                    <div class="col-md-6">
-                        <form action="/payment/order" id="paymentForm" method="post">
-                            <div class="row ">
-                                <div class="col-6">
-                                    <% if(payments[i].paymentType=="user" ) {%>
-                                        <h3>Registration Fees</h3>
-                                        <%} else {%>
+            <% for(let i=0;i<payments.length;i+=2) { %>
+                <div class="container-box payment-con">
+                    <div class="row" id="pay-row">
+                        <div class="col-md-6">
+                            <form action="/payment/order" id="paymentForm" method="post">
+                                <div class="row ">
+                                    <div class="col-6">
+                                        <% if(payments[i].paymentType=="user" ) {%>
+                                            <h3>Registration Fees</h3>
+                                            <%} else {%>
                                                 <h3>
                                                     <%= payments[i].eventName%>
                                                 </h3>
@@ -146,86 +148,87 @@
                                                     <img class="left-img"
                                                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSi0EqhjkkSPH_uH3PpFfjL9spyirBUNtaUw&usqp=CAU"
                                                         alt="">
-                                </div>
-                                <div class="col-4 btn-col-left"
-                                    style="display:flex;  flex-direction: column; justify-content:center;align-items:center;">
-                                    <div class="row" style="display:block ;">
-                                        <p>Fees : <%= payments[i].amount%></p>
-                                    </div>
-                                    <button class="btn btn-dark">Pay</button>
-                                </div>
-                            </div>
-
-                            <input name="paymentType" type="hidden" id="paymentType"
-                                value="<%=payments[i].paymentType%>" readonly>
-                            <input name="id" id="id" type="hidden" value="<%= payments[i].id %>" readonly>
-
-                        </form>
-
-                    </div>
-
-                    <% if(i + 1 <payments.length) { %>
-                        <div class="col-md-6">
-                            <form action="/payment/order" id="paymentForm" method="post">
-                                <div class="row ">
-                                    <div class="col-6">
-                                        <% if(payments[i+1].paymentType=="user" ) {%>
-                                            <h3>Registration Fees</h3>
-                                            <%} else {%>
-                                                <h3>
-                                                    <%= payments[i+1].eventName%>
-                                                </h3>
-                                                    <%}%>
-                                                        <img class="left-img"
-                                                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSi0EqhjkkSPH_uH3PpFfjL9spyirBUNtaUw&usqp=CAU"
-                                                            alt="">
                                     </div>
                                     <div class="col-4 btn-col-left"
                                         style="display:flex;  flex-direction: column; justify-content:center;align-items:center;">
                                         <div class="row" style="display:block ;">
-                                            <p>Fees : <%= payments[i+1].amount%>
+                                            <p>Fees : <%= payments[i].amount%>
                                             </p>
                                         </div>
-                                        <button class="btn btn-dark">Pay</button>
+                                        <button style="width: 40%;" class="btn btn-primary">Pay</button>
                                     </div>
                                 </div>
 
                                 <input name="paymentType" type="hidden" id="paymentType"
-                                    value="<%=payments[i+1].paymentType%>" readonly>
-                                <input name="id" id="id" type="hidden" value="<%= payments[i+1].id %>" readonly>
+                                    value="<%=payments[i].paymentType%>" readonly>
+                                <input name="id" id="id" type="hidden" value="<%= payments[i].id %>" readonly>
 
                             </form>
 
                         </div>
-                        <%}%>
+
+                        <% if(i + 1 <payments.length) { %>
+                            <div class="col-md-6">
+                                <form action="/payment/order" id="paymentForm" method="post">
+                                    <div class="row ">
+                                        <div class="col-6">
+                                            <% if(payments[i+1].paymentType=="user" ) {%>
+                                                <h3>Registration Fees</h3>
+                                                <%} else {%>
+                                                    <h3>
+                                                        <%= payments[i+1].eventName%>
+                                                    </h3>
+                                                    <%}%>
+                                                        <img class="left-img"
+                                                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSi0EqhjkkSPH_uH3PpFfjL9spyirBUNtaUw&usqp=CAU"
+                                                            alt="">
+                                        </div>
+                                        <div class="col-4 btn-col-left"
+                                            style="display:flex;  flex-direction: column; justify-content:center;align-items:center;">
+                                            <div class="row" style="display:block ;">
+                                                <p>Fees : <%= payments[i+1].amount%>
+                                                </p>
+                                            </div>
+                                            <button class="btn btn-dark">Pay</button>
+                                        </div>
+                                    </div>
+
+                                    <input name="paymentType" type="hidden" id="paymentType"
+                                        value="<%=payments[i+1].paymentType%>" readonly>
+                                    <input name="id" id="id" type="hidden" value="<%= payments[i+1].id %>" readonly>
+
+                                </form>
+
+                            </div>
+                            <%}%>
+                    </div>
+
                 </div>
-
-            </div>
-            <%}%>
+                <%}%>
 
 
-    </div>
-    <%- include('partials/footer.ejs') %>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        </div>
+        <%- include('partials/footer.ejs') %>
+            <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
         crossorigin="anonymous"></script> -->
 
-    <script src="/js/jquery-3.3.1.min.js"></script>
-    <script src="/js/jquery-migrate-3.0.1.min.js"></script>
-    <script src="/js/jquery-ui.js"></script>
-    <script src="/js/popper.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/owl.carousel.min.js"></script>
-    <script src="/js/jquery.stellar.min.js"></script>
-    <script src="/js/jquery.countdown.min.js"></script>
-    <script src="/js/bootstrap-datepicker.min.js"></script>
-    <script src="/js/jquery.easing.1.3.js"></script>
-    <script src="/js/aos.js"></script>
-    <script src="/js/jquery.fancybox.min.js"></script>
-    <script src="/js/jquery.sticky.js"></script>
-    <script src="/js/jquery.mb.YTPlayer.min.js"></script>
+            <script src="/js/jquery-3.3.1.min.js"></script>
+            <script src="/js/jquery-migrate-3.0.1.min.js"></script>
+            <script src="/js/jquery-ui.js"></script>
+            <script src="/js/popper.min.js"></script>
+            <script src="/js/bootstrap.min.js"></script>
+            <script src="/js/owl.carousel.min.js"></script>
+            <script src="/js/jquery.stellar.min.js"></script>
+            <script src="/js/jquery.countdown.min.js"></script>
+            <script src="/js/bootstrap-datepicker.min.js"></script>
+            <script src="/js/jquery.easing.1.3.js"></script>
+            <script src="/js/aos.js"></script>
+            <script src="/js/jquery.fancybox.min.js"></script>
+            <script src="/js/jquery.sticky.js"></script>
+            <script src="/js/jquery.mb.YTPlayer.min.js"></script>
 
-    <script src="/js/main.js"></script>
+            <script src="/js/main.js"></script>
 
 </body>
 

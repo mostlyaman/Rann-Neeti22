@@ -1,13 +1,14 @@
 <style>
     .alert-warning {
-    color: #ffffff;
-    background-color: #0a0a0a;
-    z-index: 199999;
-    border-color:black ;
-}
-.alert{
-    margin-bottom: 0px;
-}
+        color: #ffffff;
+        background-color: #0a0a0a;
+        z-index: 199999;
+        border-color: black;
+    }
+
+    .alert {
+        margin-bottom: 0px;
+    }
 </style>
 <div id="message" style="background-color: black; color: red;">
     <% if(message !='' ){ %>
@@ -25,5 +26,5 @@
 <script>
     setTimeout(function () {
         $('#message').fadeOut('fast');
-    }, 5000); // <-- time in milliseconds
+    }, 10000); // <-- time in milliseconds
 </script>
