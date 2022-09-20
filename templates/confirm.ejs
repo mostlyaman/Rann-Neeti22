@@ -6,10 +6,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <link rel="stylesheet" href="/css/navbar.css">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="fonts/icomoon/style.css">
+  <link rel="stylesheet" href="/fonts/icomoon/style.css">
 
   <link rel="stylesheet" href="/css/bootstrap/bootstrap.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -22,183 +20,107 @@
 
   <link rel="stylesheet" href="/css/bootstrap-datepicker.css">
 
-  <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+  <link rel="stylesheet" href="/fonts/flaticon/font/flaticon.css">
 
   <link rel="stylesheet" href="/css/aos.css">
 
   <link rel="stylesheet" href="/css/style.css">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  
+  <link rel="stylesheet" href="/css/navbar.css">
+
   <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 
   <link rel="stylesheet" href="/css/confirm_mediaquery.css">
 
   <style>
-    * {
-      margin: 0px;
-      padding: 0px;
-      font-size: 20px;
+    @media only screen and (max-width:500px) {
+
+        /* * {
+            font-size: 0.5rem;
+        } */
+
+        input {
+            font-size: 10px;
+        }
     }
 
-    #conti {
-      width: 40%;
-    }
-  </style>
-  <style>
-    @media screen and (max-width:1150px) {
-      .site-logo {
+    .site-navbar{
         position: unset !important;
-      }
-
-      h3 {
-        font-size: 23px !important;
-      }
     }
-
-    * {
-      scroll-behavior: smooth;
-      padding: 0px;
-      margin: 0px;
-      color: white;
-    }
-
-    .contactbox span {
-      margin: 3px;
-    }
-
-    #register {
-
-      width: 42%;
-      border-radius: 30px;
-      font-size: 13.5px;
-    }
-
-    #hamburger {
-      position: absolute;
-
-    }
-
-    #cont {
-      position: absolute;
-      right: 10px;
-    }
-
-    .sze {
-      letter-spacing: unset !important;
-      padding: 0px 9px !important;
-      color: #fff;
-      font-size: 18px !important;
-      display: inline-block;
-      text-decoration: none !important;
-      text-transform: unset !important
-    }
-  </style>
+</style>
 
 </head>
 
 <body onload="load()">
-  <div class="site-wrap">
+  <div class="site-wrap" style="background: url('/images/createteambg.jpeg') no-repeat center center/cover; height:auto; min-height: 100vh;">
     <%- include('partials/preloader.ejs') %>
-    <div class="site-mobile-menu site-navbar-target">
-      <div class="site-mobile-menu-header">
-        <div class="site-mobile-menu-close">
-          <span class="icon-close2 js-menu-toggle"></span>
-        </div>
-      </div>
-      <div class="site-mobile-menu-body"></div>
+    <div  style="background-color: black;">
+      <%- include('partials/navbar.ejs') %>
     </div>
-    <header class="site-navbar py-2" role="banner" style="position:relative ;">
-      <div class="">
-        <div class="d-flex align-items-center">
-          <div class="site-logo">
-            <a href="/">
-              <img
-                src="https://user-images.githubusercontent.com/111749567/189416480-17f855ab-9343-4ef1-8aa1-1c7311f55e04.png"
-                alt="Logo" height="70px" />
-            </a>
-            <h3>IIT Mandi</h3>
+
+    
+    <div class="container">
+      <div class="row align-items-center" style=" margin-bottom: 35px; height: auto;">
+          <div class="mx-auto text-center" style="margin-top:20px;">
+              <h1 class="text-white px-5 font-weight-bold" style="font-size:32px">Please Provide Details
+              </h1>
+        <hr color="#EE1E47" style="height:0.5px;box-shadow: 0 8px 2px -2px #EE1E47; max-width: 90%;">
           </div>
-          <!-- changed -->
-          <div id="cont">
-            <nav class="site-navigation text-right" role="navigation">
-              <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
-                <li class="active">
-                  <a href="/" class="nav-link sze">Home</a>
-                </li>
-                <li><a href="#about" class="nav-link sze">About Us</a></li>
-                <li><a href="/events" class="nav-link sze">Events</a></li>
-                <li><a href="#sponsers" class="nav-link sze">Sponsors</a></li>
-                <li><a href="#contact" class="nav-link sze">Contact</a></li>
-                <li><a href="/ourteam" class="nav-link sze">Our Team</a></li>
-                <% if(!authenticated){ %>
-                  <li>
-                    <a id="sign" href="/auth/google"><i class="nav-link fa-brands fa-google sze"></i> SignIn</a>
-                  </li>
-                  <% }else{ %>
-                    <li><a id="sign" href="/profile" class="nav-link sze"> Profile</a></li>
-                    <li><a href="/payment" class="nav-link sze">Payments</a></li>
-                    <li>
-                      <a id="sign" href="/auth/logout" class="nav-link sze"><i class="fa-brands fa-google"></i>
-                        Logout</a>
-                    </li>
-                    <% } %>
-                      <!-- <button id="hamburger" class="material-symbols-outlined">menu</button> -->
-              </ul>
-            </nav>
-            <!-- changed -->
-            <a href="#"
-              class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black float-right text-white"><span
-                class="icon-menu h3 text-white"></span></a>
-          </div>
-        </div>
       </div>
-    </header>
+      <div class="container mx-auto row align-items-center">
+        <form class="mx-auto d-flex flex-column align-items-center" action="#/events/joinTeam" method="POST" style="
+    width: 500px;
+">
+            <div class="title-section container" >
+                <label class="heading m-0 py-2" for="teamId">Team Id</label>
+            </div>
+            <input style="text-align: center;
+            color: black;
+            width: 70%;
+            padding: 5px;
+            font-size: 16px;
+            margin-left: 30px;
+            margin-bottom: 20px;
+            border-radius: 10px;" name="teamId" id="teamId" type="text" placeholder="Enter Team Id"
+                autocomplete="off">
 
-    <div class="row" id="team_form">
-      <!-- <div id="eventname" style="    width: 40%;
-          position: absolute;
-          margin: 70px 30px;">
-            <p>Rann-Neeti 22</p>
-          </div> -->
-      <div id="conti">
+                <div class="title-section container" >
+                  <label class="heading m-0 py-2" for="TeamName">Team Name</label>
+              </div>
+              <input style="text-align: center;
+              color:black;
+              width: 70%;
+              padding: 5px;
+              font-size: 16px;
+              margin-left: 30px;
+              margin-bottom: 20px;
+              border-radius: 10px;" name="college" id="college" type="text" placeholder="Enter College Name"
+                  autocomplete="off">
 
-        <div class="title-section">
-          <h1 class="heading">Please Provide Details</h1>
-        </div>
-        <form action="#/events/joinTeam" method="post">
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Team-Id" name="teamId">
-          </div>
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="College" name="college">
-          </div>
-          <!-- <div class="form-group" style="    margin-left: 45px;">
-                    <input type="text" class="form-control" placeholder="Degree">
-                  </div>
-                  <div class="form-group" style="    margin-left: 45px;">
-                    <input type="text" class="form-control" placeholder="Specialization">
-                  </div> -->
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Phone" name="phone">
-          </div>
-          <!-- <div class="form-group">
-                    <textarea name="" class="form-control" id="" cols="30" rows="10"
-                      placeholder="Write something..."></textarea>
-                  </div> -->
-          <div class="form-group">
-            <input type="submit" class="btn btn-primary" style="border-radius: 30px;
+                  <div class="title-section container" >
+                    <label class="heading m-0 py-2" for="TeamName">Phone</label>
+                </div>
+                <input style="text-align: center;
+                color:black;
+                width: 70%;
+                padding: 5px;
+                font-size: 16px;
+                margin-left: 30px;
+                margin-bottom: 20px;
+                border-radius: 10px;" placeholder="Phone" name="phone" id="phone" type="text" 
+                    autocomplete="off">
+
+                    <input type="submit" class="btn btn-primary" style="border-radius: 30px;
                     padding: 6px;
                     margin:40px;
                     width: 35%;
                     font-size: 17px;" value="Proceed">
-          </div>
-        </form>
-      </div>
 
+        </form>
     </div>
 
-    <%- include('partials/footer.ejs') %>
-
+    
+  </div>
+  <%- include('partials/footer.ejs') %>
   </div>
 
 
