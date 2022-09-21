@@ -163,8 +163,6 @@ module.exports = { // event functions ==========================================
             // updating the team id of the leader
             await userTable.updateOne({ googleId: userDetail.googleId }, { $push: { teams: { teamId: newteam._id, eventId: event._id } } });
 
-            // add the user to registered user of the event
-            await eventTable.updateOne({ _id: event._id }, { $push: { registeredUsers: { user_id: userDetail._id } } });
 
             return "Team created successfully!";
         }
@@ -209,7 +207,6 @@ module.exports = { // event functions ==========================================
 
             if (maxTeamsize > currentTeamSize + 1) {
                 await userTable.updateOne({ googleId: userDetail.googleId }, { $push: { teams: { teamId: teamId, eventId: eventDetail._id } } });
-                await eventTable.updateOne({ _id: teamDetail.event }, { $push: { registeredUsers: { user_id: userDetail._id } } });
                 await teamTable.updateOne({ _id: teamId }, { $push: { members: { member_id: userDetail._id } } });
                 return "Team joined successfully!"
             }

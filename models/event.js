@@ -47,14 +47,6 @@ const EventSchema = new mongoose.Schema(
         {
             type: String,
         },
-        registeredUsers: [
-            {
-                user_id: {
-                    type: mongoose.Schema.Types.ObjectId,
-                    unique: true,
-                },
-            },
-        ],
         teamSize: {
             type: Number,
             required: true
