@@ -47,17 +47,21 @@ module.exports = { // event functions ==========================================
         let checker = false;
         if (event && user) {
             const userDetail = await userTable.findOne({ googleId: user.googleId });
-            const registeredTeams = userDetail.teams;
-            let count = 0;
 
-            for (let i = 0; i < registeredTeams.length; i++) {
-                let currentEvent = await module.exports.findEventById(registeredTeams[i].eventId);
-                if (currentEvent.eventType === "atheletic")
-                    count++;
+            if (userDetail) {
+                const registeredTeams = userDetail.teams;
+                let count = 0;
+
+                for (let i = 0; i < registeredTeams.length; i++) {
+                    let currentEvent = await module.exports.findEventById(registeredTeams[i].eventId);
+                    if (currentEvent.eventType === "atheletic")
+                        count++;
+                }
+
+                if (count === 3)
+                    checker = true;
+
             }
-
-            if (count === 3)
-                checker = true;
         }
         return checker;
     },
@@ -178,36 +182,43 @@ module.exports = { // event functions ==========================================
 
         const teamDetail = await teamTable.findOne({ _id: teamId });
         const userDetail = await userTable.findOne({ googleId: req.user.googleId });
-        const eventDetail = await module.exports.findEventById(teamDetail.event);
 
-        if (userDetail && userDetail.paymentStatus == 0) {
-            return "Sorry, you can't join a team before submitting accomodation charges."
-        }
 
-        // validtion of team id
-        if (teamDetail == null || userDetail == null || eventDetail == null) {
-            return "Invalid Details";
-        }
+        if (teamDetail) {
+            const eventDetail = await module.exports.findEventById(teamDetail.event);
 
-        // validation for already registered user or not
-        let checker = (await module.exports.isRegisteredforEvent(req.user, eventDetail)) || (await module.exports.checkAtheleticEvents(req.user, eventDetail));
+            if (userDetail && userDetail.paymentStatus == 0) {
+                return "Sorry, you can't join a team before submitting accomodation charges."
+            }
 
-        if (checker) {
-            return "You can only register for atmost 3 atheletic events or already registered for this event!";
-        }
+            // validtion of team id
+            if (teamDetail == null || userDetail == null || eventDetail == null) {
+                return "Invalid Details";
+            }
 
-        // first we have to check this team is full or not
-        let maxTeamsize = eventDetail.teamSize;
-        let currentTeamSize = teamDetail.members.length;
+            // validation for already registered user or not
+            let checker = (await module.exports.isRegisteredforEvent(req.user, eventDetail)) || (await module.exports.checkAtheleticEvents(req.user, eventDetail));
 
-        if (maxTeamsize > currentTeamSize + 1) {
-            await userTable.updateOne({ googleId: userDetail.googleId }, { $push: { teams: { teamId: teamId, eventId: eventDetail._id } } });
-            await eventTable.updateOne({ _id: teamDetail.event }, { $push: { registeredUsers: { user_id: userDetail._id } } });
-            await teamTable.updateOne({ _id: teamId }, { $push: { members: { member_id: userDetail._id } } });
-            return "Team joined successfully!"
+            if (checker) {
+                return "You can only register for atmost 3 atheletic events or already registered for this event!";
+            }
+
+            // first we have to check this team is full or not
+            let maxTeamsize = eventDetail.teamSize;
+            let currentTeamSize = teamDetail.members.length;
+
+            if (maxTeamsize > currentTeamSize + 1) {
+                await userTable.updateOne({ googleId: userDetail.googleId }, { $push: { teams: { teamId: teamId, eventId: eventDetail._id } } });
+                await eventTable.updateOne({ _id: teamDetail.event }, { $push: { registeredUsers: { user_id: userDetail._id } } });
+                await teamTable.updateOne({ _id: teamId }, { $push: { members: { member_id: userDetail._id } } });
+                return "Team joined successfully!"
+            }
+            else {
+                return "Team already full!";
+            }
         }
         else {
-            return "Team already full!";
+            return "Invaild Team ID";
         }
     },
     findTeamById: async function (teamId) {
