@@ -315,7 +315,7 @@ module.exports = { // event functions ==========================================
         const heads = await headTable.find({}).lean();
 
         heads.sort(function (a, b) {
-            return a.order > b.order ? 1 : -1;
+            return parseInt(a.order) > parseInt(b.order) ? 1 : -1;
         });
         return heads;
     }

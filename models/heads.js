@@ -35,7 +35,7 @@ const HeadSchema = new mongoose.Schema(
             required: true,
         }, order:
         {
-            type: Number,
+            type: String,
         },
     }
 );
