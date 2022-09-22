@@ -46,7 +46,8 @@
     height: 100% !important;
     background-size: cover !important;
   }
-  h3{
+
+  h3 {
     font-size: 18px !important;
     font-weight: bold;
   }
@@ -67,7 +68,8 @@
             <div class="col-12 col-sm-6 col-md-4 col-lg-3">
               <div class="our-team">
                 <div class="picture">
-                  <img class="img-fluid" style="object-fit: cover; object-position: center;" src="<%=heads[i].image_link%>">
+                  <img class="img-fluid" style="object-fit: cover; object-position: center;"
+                    src="<%=heads[i].image_link%>">
                 </div>
                 <div class="team-content">
                   <h3 class="name">
@@ -81,7 +83,7 @@
                   </h4>
                 </div>
                 <ul class="social">
-                  <% if(heads[i].twitter !="" ) { %>
+                  <% if(heads[i].instagram !="" ) { %>
                     <li><a href="<%=heads[i].instagram%>" target="_blank" class="fa-brands fa-instagram"
                         aria-hidden="true"></a></li>
                     <%}%>
