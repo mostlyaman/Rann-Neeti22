@@ -34,7 +34,7 @@
             </ul>
             <% if(!authenticated){ %>
               <li>
-                <a id="sign" href="/auth/google"><i class="nav-link fa-brands fa-google sze"></i> SignIn</a>
+                <a id="sign" class="nav-link sze" href="/auth/google">SignIn</a>
               </li>
               <% }else{ %>
                 <ul class="site-menu main-menu js-clone-nav mr-auto d-none">
@@ -42,7 +42,7 @@
                   <li><a href="/payment" class="nav-link sze">Payments</a></li>
                 </ul>
                 <li>
-                  <a id="sign" href="/auth/logout" class="nav-link sze"><i class="fa-brands fa-google"></i> Logout</a>
+                  <a id="sign" href="/auth/logout" class="nav-link sze">Logout</a>
                 </li>
                 <% } %>
               </ul>
