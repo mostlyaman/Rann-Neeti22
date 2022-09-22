@@ -39,7 +39,6 @@
       width: 70%;
       padding: 21px;
       border-radius: 46px;
-      z-index: -1;
       background-color: #00000036;
       border: 0px;
     }
@@ -163,7 +162,7 @@
                 <div style="display: flex;; flex-wrap: wrap;">
                   <%for(let i=0; i< events.length;i++){ %>
                     <div class="gamecard">
-                      <img style="height: auto; width: 80%; min-height: 300px; border-radius: 20px;"
+                      <img style="object-fit: cover;object-position: center ;height: auto; width: 80%; height: 300px; border-radius: 20px;"
                         src="<%=events[i].event_image %>" alt="">
                       <button onclick="window.location='/events/game?game=<%=events[i].name %>';"
                         class="register btn-primary">
